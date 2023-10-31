@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  padding: 0rem;
+}
+
+main {
+  margin: 0 auto;
+  #max-width: 64rem;
+  padding: 1rem 1rem;
+}
+
+@layer base {
+  h1 {
+    @apply text-3xl font-bold py-2 mb-3 font-poppins;
+  }
+  h2 {
+      @apply text-2xl font-bold py-2;
+  }
+  h3 {
+      @apply text-xl font-bold  py-2;
+  }
+  title {
+      @apply text-3xl text-center font-bold py-2;
+  }
+}
