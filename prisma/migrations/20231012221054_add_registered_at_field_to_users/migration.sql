@@ -1,3 +1,0 @@
--- AlterTable
-ALTER TABLE `users` ADD COLUMN `registered_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
-    MODIFY `is_active` BIT(1) NOT NULL DEFAULT true;

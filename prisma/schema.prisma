@@ -44,6 +44,9 @@ model User {
   image          String?
   accounts       Account[]
   sessions       Session[]
+  articles       Article[]
+  comments       Comment[]
+  likes          Like[]
 }
 
 model VerificationToken {
@@ -54,9 +57,44 @@ model VerificationToken {
   @@unique([identifier, token])
 }
 
-model Products {
-  id          Int @id @default(autoincrement())
-  name        String @unique
-  description String?
-  price       Float
+model Article {
+  id              Int       @id @default(autoincrement())
+  date            DateTime  @default(now())
+  title           String    @unique
+  summary         String    @db.Text
+  text            String    @db.MediumText
+  userId          String
+  user            User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  categoryId      Int
+  category        Category  @relation(fields: [categoryId], references: [id])
+  image           String
+  tags            String
+  commentsEnabled Boolean
+  comments        Comment[]
+  likes           Like[]
+}
+
+model Category {
+  id       Int       @id @default(autoincrement())
+  parentId Int?
+  name     String    @unique
+  articles Article[]
+}
+
+model Comment {
+  id        Int      @id @default(autoincrement())
+  date      DateTime @default(now())
+  text      String   @db.Text
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  articleId Int
+  article   Article  @relation(fields: [articleId], references: [id])
+}
+
+model Like {
+  id        Int     @id @default(autoincrement())
+  userId    String
+  user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  articleId Int
+  article   Article @relation(fields: [articleId], references: [id])
 }
