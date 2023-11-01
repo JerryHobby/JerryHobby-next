@@ -12,7 +12,7 @@ export async function POST(request: NextRequest) {
     const name = body.name;
     const token = body.token;
 
-    if(!email || !name || !token){
+    if (!email || !name || !token) {
         return NextResponse.json({
                 error: "Missing Required Fields"
             },

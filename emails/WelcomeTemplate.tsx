@@ -1,6 +1,5 @@
 import React from 'react';
-import {Html, Body, Container, Text, Link, Preview, Tailwind} from "@react-email/components";
-import {CSSProperties} from "preact/compat";
+import {Body, Container, Html, Link, Preview, Tailwind, Text} from "@react-email/components";
 
 interface Props {
     name: string,
@@ -30,10 +29,10 @@ const WelcomeTemplate = ({name, token}: Props) => {
 };
 
 const body: string = "bg-white"
-const container: string  = "p-10"
-const text: string  = "text-md"
-const link: string  = "text-blue-500"
-const preview: string  = "text-lg"
-const heading: string  = "text-3xl"
+const container: string = "p-10"
+const text: string = "text-md"
+const link: string = "text-blue-500"
+const preview: string = "text-lg"
+const heading: string = "text-3xl"
 
 export default WelcomeTemplate;

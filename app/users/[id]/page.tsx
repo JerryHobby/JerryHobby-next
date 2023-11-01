@@ -1,6 +1,6 @@
 "use client"
 import React, {useState} from 'react';
-import {router } from "next/client";
+import {router} from "next/client";
 import {useSession} from "next-auth/react";
 
 interface Props {
@@ -19,8 +19,8 @@ const UserDetailPage = ({params: {id}}: Props) => {
 
     const [user, setUser] = useState({} as User);
 
-    const { data: session } = useSession()
-    if(!session) {
+    const {data: session} = useSession()
+    if (!session) {
         return <main>
             <h1>Access Denied</h1>
         </main>
@@ -32,17 +32,25 @@ const UserDetailPage = ({params: {id}}: Props) => {
         <main><h1>Users Detail Page</h1>
             <table className="table">
                 <tbody>
-                <tr><td>Name</td><td>{user.name}</td></tr>
-                <tr><td>Email</td><td>{user.email}</td></tr>
-            </tbody></table>
-            <button className='btn btn-primary'onClick={async () =>{
+                <tr>
+                    <td>Name</td>
+                    <td>{user.name}</td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td>{user.email}</td>
+                </tr>
+                </tbody>
+            </table>
+            <button className='btn btn-primary' onClick={async () => {
                 await fetch(
-                     "/api/users/" + id,
+                    "/api/users/" + id,
                     {
                         method: 'DELETE',
                     });
                 await router.push("/users");
-            }}>Delete</button>
+            }}>Delete
+            </button>
 
         </main>
     );

@@ -5,7 +5,18 @@ import {FaArrowCircleRight} from "react-icons/fa";
 import {BsPersonVcard} from "react-icons/bs";
 import {useSession} from "next-auth/react";
 import {Session} from "next-auth";
-import {BiHome, BiBookAlt, BiBuildings, BiCodeBlock,BiCustomize, BiHive,BiSitemap, BiFile, BiConversation, BiSlider } from "react-icons/bi";
+import {
+    BiBookAlt,
+    BiBuildings,
+    BiCodeBlock,
+    BiConversation,
+    BiCustomize,
+    BiFile,
+    BiHive,
+    BiHome,
+    BiSitemap,
+    BiSlider
+} from "react-icons/bi";
 
 import Image from "next/image";
 
@@ -72,12 +83,12 @@ const NavBar = () => {
     const {status, data: session} = useSession();
     return (
         <>
-        <div
-            className={navBarStyle}>
-            {leftNavBar()}
-            <div className="flex-grow"/>
-            {rightNavBar(status, session)}
-        </div>
+            <div
+                className={navBarStyle}>
+                {leftNavBar()}
+                <div className="flex-grow"/>
+                {rightNavBar(status, session)}
+            </div>
         </>
     );
 
@@ -88,16 +99,16 @@ const NavBar = () => {
                      width="0"
                      height="0"
                      sizes="20vw"
-                     className="w-5 h-5" ></Image>
+                     className="w-5 h-5"></Image>
                 <div className="space-x-6 pl-4 text-sm align-middle">
 
-                {
-                    navBarLeftItems.map((item, index) => (
-                        <Link className="whitespace-nowrap" href={item.href}
-                              key={index}>{item.icon}{item.name}</Link>
-                    ))
-                }
-            </div>
+                    {
+                        navBarLeftItems.map((item, index) => (
+                            <Link className="whitespace-nowrap" href={item.href}
+                                  key={index}>{item.icon}{item.name}</Link>
+                        ))
+                    }
+                </div>
             </>
         )
     }

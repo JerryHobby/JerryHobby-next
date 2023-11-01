@@ -46,18 +46,19 @@ const EditProfile = () => {
     }
 
 
-
     let tmpUser: User;
 
     return (
         <main><h1>Edit Profile Page</h1>
-            <label>Name:</label><input type="text" value={newUser.name} placeholder="Name" className="form-control border"
+            <label>Name:</label><input type="text" value={newUser.name} placeholder="Name"
+                                       className="form-control border"
                                        onChange={(v) => {
                                            tmpUser = {...newUser};
                                            tmpUser.name = v.target.value;
                                            setNewUser(tmpUser);
                                        }}/>
-            <label>Name:</label><input type="text" value={newUser.email} placeholder="EMail" className="form-control border"
+            <label>Name:</label><input type="text" value={newUser.email} placeholder="EMail"
+                                       className="form-control border"
                                        onChange={(v) => {
                                            tmpUser = {...newUser};
                                            tmpUser.email = v.target.value;
@@ -73,12 +74,12 @@ const EditProfile = () => {
                                                }}/>
 
             <label>Confirm Password:</label><input type="text" placeholder="Confirm Password "
-                                               className="form-control password border"
-                                               onChange={(v) => {
-                                                   tmpUser = {...newUser};
-                                                   tmpUser.confirmPassword = v.target.value;
-                                                   setNewUser(tmpUser);
-                                               }}/>
+                                                   className="form-control password border"
+                                                   onChange={(v) => {
+                                                       tmpUser = {...newUser};
+                                                       tmpUser.confirmPassword = v.target.value;
+                                                       setNewUser(tmpUser);
+                                                   }}/>
 
             <button className='btn btn-primary' onClick={async () => {
                 await update(
@@ -91,7 +92,8 @@ const EditProfile = () => {
                 await update();
                 saveChanges(newUser, router);
             }
-            }>Save Changes</button>
+            }>Save Changes
+            </button>
 
         </main>
     );

@@ -67,9 +67,9 @@ model Article {
   user            User      @relation(fields: [userId], references: [id], onDelete: Cascade)
   categoryId      Int
   category        Category  @relation(fields: [categoryId], references: [id])
-  image           String
-  tags            String
-  commentsEnabled Boolean
+  image           String?
+  tags            String?
+  commentsEnabled Boolean   @default(true)
   comments        Comment[]
   likes           Like[]
 }
@@ -97,4 +97,11 @@ model Like {
   user      User    @relation(fields: [userId], references: [id], onDelete: Cascade)
   articleId Int
   article   Article @relation(fields: [articleId], references: [id])
+}
+
+model Page {
+  id    Int      @id @default(autoincrement())
+  date  DateTime @default(now())
+  title String   @unique
+  text  String   @db.Text
 }

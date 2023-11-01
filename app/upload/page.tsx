@@ -1,6 +1,6 @@
 'use client'
 import React from 'react';
-import {CldUploadWidget, CldImage} from 'next-cloudinary';
+import {CldImage, CldUploadWidget} from 'next-cloudinary';
 
 interface CloudinaryUploadResult {
     event: string
@@ -23,14 +23,14 @@ const UploadPage = () => {
             <div>
                 <br/>
                 {uploadWidget()}
-        </div>
+            </div>
         </main>
     );
 
     function uploadWidget() {
         return (
             <CldUploadWidget
-                options = {
+                options={
                     {
                         sources: ["local"],
                         multiple: false,
@@ -43,7 +43,7 @@ const UploadPage = () => {
                 onUpload={(result, widget) => {
                     {
                         const myResult = result as CloudinaryUploadResult;
-                        if(myResult.event === 'success') {
+                        if (myResult.event === 'success') {
                             setPublicId(myResult.info.public_id);
                         }
                     }

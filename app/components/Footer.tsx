@@ -1,13 +1,5 @@
 'use client'
 import React from 'react';
-import Link from "next/link";
-import {FaArrowCircleRight, FaHome} from "react-icons/fa";
-import {BsPersonVcard} from "react-icons/bs";
-import {useSession} from "next-auth/react";
-import {Session} from "next-auth";
-import {BiBookAlt, BiBuildings, BiCodeBlock,BiCustomize, BiBriefcaseAlt,BiSitemap, BiFile, BiConversation, BiSlider } from "react-icons/bi";
-
-import Image from "next/image";
 import {Button} from "@react-email/button";
 
 const iconClass = 'inline align-text-top text-lg mr-1';
@@ -18,20 +10,19 @@ const navBarDropShadow = " drop-shadow-[0_2px_3px_rgba(0,0,0,0.1)] border border
 const footerStyle = navBarGradientGray + navBarDropShadow + " flex space-x-6 px-4 py-2 min-w-full text-sm"
 
 
-
-
 const Footer = () => {
     return (
         <>
-        <div className={footerStyle}>
-            <Button className="flex flex-col items-center justify-center">Copyright 2023 - Jerry Hobby</Button>
-            <div className="flex-grow"/>
+            <div className={footerStyle}>
+                <Button className="flex flex-col items-center justify-center">Copyright 2023 - Jerry Hobby</Button>
+                <div className="flex-grow"/>
 
-            <Button className="flex flex-col items-center justify-center">Jerry Hobby - Professional Software Engineer</Button>
-            <div className="flex-grow"/>
+                <Button className="flex flex-col items-center justify-center">Jerry Hobby - Professional Software
+                    Engineer</Button>
+                <div className="flex-grow"/>
 
-            <Button className="flex flex-col items-center justify-center">Built with Next.JS/React</Button>
-        </div>
+                <Button className="flex flex-col items-center justify-center">Built with Next.JS/React</Button>
+            </div>
         </>
     );
 };

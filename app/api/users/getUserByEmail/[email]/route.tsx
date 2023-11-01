@@ -11,6 +11,7 @@ interface Props {
         email: string
     }
 }
+
 export async function GET(request: NextRequest, {params: {email}}: Props) {
     const body = request.body;
     console.log("GET:", email);

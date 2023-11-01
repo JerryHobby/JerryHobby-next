@@ -31,7 +31,7 @@ async function UserTable({sortOrder}: Props = {sortOrder: 'name'}) {
             <tbody>
             {users.map((user: User) => (
                 <tr key={user.id}>
-                    <td><Link href={ process.env.HOSTNAME + "/users/" + user.id + "/"}>{user.name}</Link></td>
+                    <td><Link href={process.env.HOSTNAME + "/users/" + user.id + "/"}>{user.name}</Link></td>
                     <td>{user.email}</td>
                 </tr>
             ))}

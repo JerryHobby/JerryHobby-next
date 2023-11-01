@@ -7,7 +7,7 @@ interface Props {
     }
 }
 
-const UserPhotoPage = ( { params: { id, photoId }}: Props ) => {
+const UserPhotoPage = ({params: {id, photoId}}: Props) => {
     return (
         <div>Users Photo Page {id} / {photoId}</div>
     );

@@ -10,7 +10,6 @@ interface Props {
 }
 
 
-
 export async function GET(request: NextRequest, {params: {id}}: Props) {
 
     const user = await prisma.user.findUnique(
@@ -68,7 +67,7 @@ export async function PUT(request: NextRequest, {params: {id}}: Props) {
             });
     }
 
-    if(body.password != "" && body.password != null) {
+    if (body.password != "" && body.password != null) {
         user.hashedPassword = await bcrypt.hash(body.password, 10);
     }
 
@@ -83,7 +82,7 @@ export async function PUT(request: NextRequest, {params: {id}}: Props) {
         }
     })
 
-    if(!updatedUser){
+    if (!updatedUser) {
         return NextResponse.json({
                 error: "User Not Updated"
             },
@@ -126,8 +125,7 @@ export async function DELETE(request: NextRequest, {params: {id}}: Props) {
         }
     })
 
-    return NextResponse.json({
-        },
+    return NextResponse.json({},
         {
             status: 200
         }

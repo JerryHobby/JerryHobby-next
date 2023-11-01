@@ -1,18 +1,29 @@
 import React from 'react';
 
-import {BiHome, BiBookAlt, BiBuildings, BiCodeBlock,BiCustomize, BiHive,BiSitemap, BiFile, BiConversation, BiSlider } from "react-icons/bi";
+import {
+    BiBookAlt,
+    BiBuildings,
+    BiCodeBlock,
+    BiConversation,
+    BiCustomize,
+    BiFile,
+    BiHive,
+    BiHome,
+    BiSitemap,
+    BiSlider
+} from "react-icons/bi";
 
 const pageIcons = new Map<string, any>();
 const iconClass = "inline-block align-text-bottom pr-2"
 
 pageIcons.set("home", <BiHome className={iconClass}/>);
 pageIcons.set("admin", <BiSlider className={iconClass}/>);
-pageIcons.set("articles",<BiBookAlt className={iconClass}/>);
-pageIcons.set("leadership",<BiBuildings className={iconClass}/>);
-pageIcons.set("technical",<BiCodeBlock className={iconClass}/>);
+pageIcons.set("articles", <BiBookAlt className={iconClass}/>);
+pageIcons.set("leadership", <BiBuildings className={iconClass}/>);
+pageIcons.set("technical", <BiCodeBlock className={iconClass}/>);
 pageIcons.set("experience", <BiCustomize className={iconClass}/>);
 pageIcons.set("projects", <BiHive className={iconClass}/>);
-pageIcons.set("buildProcess",<BiSitemap className={iconClass}/>);
+pageIcons.set("buildProcess", <BiSitemap className={iconClass}/>);
 pageIcons.set("resume", <BiFile className={iconClass}/>);
 pageIcons.set("contact", <BiConversation className={iconClass}/>);
 
@@ -25,8 +36,8 @@ interface Props {
 const Title = ({title, icon}: Props) => {
     return (
         <>
-        <div className="pt-2 pb-10 text-5xl text-center">{pageIcons.get(icon)}{title}</div>
-        <hr className="border-b-1 border-gray-500 pb-10"></hr>
+            <div className="pt-2 pb-10 text-5xl text-center">{pageIcons.get(icon)}{title}</div>
+            <hr className="border-b-1 border-gray-500 pb-10"></hr>
         </>
     );
 };

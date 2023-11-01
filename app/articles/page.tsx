@@ -1,39 +1,33 @@
 import React from 'react';
 import Title from "@/app/components/Title";
-import ContentBox from "@/app/components/ContentBox";
-import Image from "next/image";
+import usePages from "@/app/models/UsePages";
+import {Card, Flex} from "@radix-ui/themes";
+import ShowMarkdown from "@/app/components/ShowMarkdown";
+import {Page} from ".prisma/client";
 
-const Articles = () => {
+const Articles = async () => {
+    const title = "Articles"
+    const icon = "articles"
+    const pagePrefix = "articles"
+
+    const data = await usePages(pagePrefix);
+
+    function getCard(content?: Page) {
+        if(!content) return (<>No data</>);
+        return(<ShowMarkdown item={content}/>);
+    }
+
+    const cardStyle = 'prose w-96 mt-5'
+
     return (
         <main>
-            <Title title='Articles' icon="articles"></Title>
+            <Title title={title} icon={icon}/>
 
-            <div className="flex">
-                <ContentBox className="flex w-1/8 mr-3">
-                    <Image src={'/jh2.png'}
-                           alt={"Jerry."}
-                           width="50"
-                           height="90"
-                           sizes="50vw"
-                           className=" object-scale-down"></Image>
-
-                    <p className={"pl-3"}>The principal reason.The principal reason.The principal reason.The principal
-                        reason.The principal reason.The principal reason.The principal reason.The principal reason.The
-                        principal reason.The principal reason.The principal reason.</p>
-                </ContentBox>
-
-                <p className="w-max">The principal reason you won't find every valid re- word in a dictionary
-                    is because re- is a productive prefix, which can easily be used to
-                    form words with a predictable meaning -- as long as the meaning is the
-                    most obvious "repeat". Thus re-email would mean to send another email.
-                </p>
-            </div>
-
+            {(data) && data['Articles 1']
+                && <ShowMarkdown item={data['Articles 1']}/>}
 
         </main>
-    );
+    )
 };
-
-Articles.propTypes = {};
 
 export default Articles;

@@ -1,11 +1,11 @@
 import React, {ReactNode} from 'react';
-import PropTypes from 'prop-types';
 import {getServerSession} from "next-auth";
 import {nextAuthOptions} from "@/app/api/auth/[...nextauth]/route";
 
 interface Props {
     children: ReactNode
 }
+
 const AdminLayout = async ({children}: Props) => {
     const session = await getServerSession(nextAuthOptions)
     if (!session) {

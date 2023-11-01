@@ -1,18 +1,35 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Title from "@/app/components/Title";
+import usePages from "@/app/models/UsePages";
+import {Card, Flex} from "@radix-ui/themes";
+import ShowMarkdown from "@/app/components/ShowMarkdown";
+import {Page} from ".prisma/client";
 
-interface Props {
-}
+const Projects = async () => {
 
-const Projects = () => {
+    const title = "Projects"
+    const icon = "projects"
+    const pagePrefix = "projects"
+
+    const data = await usePages(pagePrefix);
+
+
+    function getCard(content?: Page) {
+        if(!content) return (<>No data</>);
+        return(<ShowMarkdown item={content}/>);
+    }
+
+    const cardStyle = 'prose w-96 mt-5'
+
     return (
         <main>
-            <Title title = 'Projects and Demos' icon ='projects'></Title>
-        </main>
-    );
-};
+            <Title title={title} icon={icon}/>
 
-Projects.propTypes = {};
+            {(data) && data['Projects 1']
+                && <ShowMarkdown item={data['Projects 1']}/>}
+
+        </main>
+    )
+};
 
 export default Projects;

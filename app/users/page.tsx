@@ -1,15 +1,15 @@
-import React, {Suspense} from 'react';
+import React from 'react';
 import UserTable from "@/app/users/UserTable";
 import Link from "next/link";
-import {useSession} from "next-auth/react";
 import {getServerSession} from "next-auth";
-import { nextAuthOptions } from '@/app/api/auth/[...nextauth]/route';
+import {nextAuthOptions} from '@/app/api/auth/[...nextauth]/route';
 
 interface Props {
     searchParams: {
         sortOrder: string,
     }
 }
+
 const UsersPage = async ({searchParams: {sortOrder}}: Props) => {
     const session = await getServerSession(nextAuthOptions)
     if (!session) {

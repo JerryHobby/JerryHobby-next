@@ -10,7 +10,7 @@ interface Props {
 
 export async function GET(request: NextRequest, {params: {id}}: Props) {
 
-    if(!id) {
+    if (!id) {
         const products = await prisma.products.findMany();
         if (!products) {
             return NextResponse.json({
@@ -26,10 +26,11 @@ export async function GET(request: NextRequest, {params: {id}}: Props) {
             id: parseInt(id)
         }
     });
-    if(!product) {
+    if (!product) {
         return NextResponse.json({
-                error: "Product Not Found" },
-            { status: 404 }) ;
+                error: "Product Not Found"
+            },
+            {status: 404});
     }
     return NextResponse.json(product);
 }
@@ -80,7 +81,7 @@ export async function PUT(request: NextRequest, {params: {id}}: Props) {
         }
     })
 
-    if(!updatedProduct){
+    if (!updatedProduct) {
         return NextResponse.json({
                 error: "Product Not Updated"
             },
@@ -96,6 +97,7 @@ export async function PUT(request: NextRequest, {params: {id}}: Props) {
     );
 
 }
+
 export async function DELETE(request: NextRequest, {params: {id}}: Props) {
     //const body = await request.json();
     var product = await prisma.products.findUnique({

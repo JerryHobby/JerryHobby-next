@@ -1,8 +1,6 @@
 'use client';
 import React, {useState} from 'react';
-import Link from "next/link";
 import {useRouter} from "next/navigation";
-import prisma from "@/prisma/client";
 
 interface User {
     name: string,
@@ -44,23 +42,23 @@ const NewUserPage = () => {
                                             setNewUser(user);
                                         }}/>
             <label>New Password:</label><input type="text" placeholder="Password"
-                                       className="form-control password border"
-                                       onChange={(v) => {
-                                           user = {...newUser};
-                                           user.password = v.target.value;
-                                           setNewUser(user);
-                                       }}/>
+                                               className="form-control password border"
+                                               onChange={(v) => {
+                                                   user = {...newUser};
+                                                   user.password = v.target.value;
+                                                   setNewUser(user);
+                                               }}/>
             <label>New Password:</label><input type="text" placeholder="Password "
-                                       className="form-control password border"
-                                       onChange={(v) => {
-                                           user = {...newUser};
-                                           user.confirmPassword = v.target.value;
-                                           setNewUser(user);
-                                       }}/>
+                                               className="form-control password border"
+                                               onChange={(v) => {
+                                                   user = {...newUser};
+                                                   user.confirmPassword = v.target.value;
+                                                   setNewUser(user);
+                                               }}/>
 
             <button className='btn btn-primary' onClick={async () => {
-                if(newUser.password != newUser.confirmPassword) {
-                    alert("Passwords do not match " + newUser.password + " != " +  newUser.confirmPassword);
+                if (newUser.password != newUser.confirmPassword) {
+                    alert("Passwords do not match " + newUser.password + " != " + newUser.confirmPassword);
                     return;
                 }
                 const res = await fetch(
