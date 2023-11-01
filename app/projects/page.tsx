@@ -18,23 +18,23 @@ const Projects = async () => {
     const projects = await useProjects();
 
     function getCard(project?: Project) {
-        if(!project) return (<>No data</>);
-        return(
+        if (!project) return (<>No data</>);
+        return (
             <div>
                 <Link href={`${project.url}`}>
                     <Heading size='6' className='pb-5' align='center'>{project.title}</Heading>
-                <Flex align='start' gap='1' >
-                    <Image src={project.thumbnailUrl}
-                           alt={'App Thumbnail'}
-                           width={100}
-                           height={100}
-                           className={'mt-2 rounded-lg object-contain w-200'}
-                    />
-                    <Box className='px-4'>{project.text}</Box>
-            </Flex>
+                    <Flex align='start' gap='1'>
+                        <Image src={project.thumbnailUrl}
+                               alt={'App Thumbnail'}
+                               width={100}
+                               height={100}
+                               className={'mt-2 rounded-lg object-contain w-200'}
+                        />
+                        <Box className='px-4'>{project.text}</Box>
+                    </Flex>
                 </Link>
             </div>
-    );
+        );
 
     }
 

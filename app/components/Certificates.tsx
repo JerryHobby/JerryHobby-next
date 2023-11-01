@@ -1,8 +1,8 @@
 'use client';
 import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import {Carousel} from 'react-responsive-carousel';
+import Image from "next/image";
 
 const certificates = [
     {
@@ -91,13 +91,17 @@ export default class Certificates extends Component {
                 showIndicators={false}
             >
                 {certificates.map((certificate) => {
-                    return (
-                        <div>
-                            <img src={`/certificates/${certificate.image}`}/>
-                            {/*<p className="legend">{certificate.title}</p>*/}
-                        </div>
-                    )
-                }
+                        return (
+                            <div key={certificate.title}>
+                                <Image
+                                    alt={certificate.title}
+                                    src={`/certificates/${certificate.image}`}
+                                    width={500} height={350}
+                                />
+                                {/*<p className="legend">{certificate.title}</p>*/}
+                            </div>
+                        )
+                    }
                 )}
             </Carousel>
         );

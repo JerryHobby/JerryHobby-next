@@ -14,8 +14,8 @@ const Technical = async () => {
     const data = await usePages(pagePrefix);
 
     function getCard(content?: Page) {
-        if(!content) return (<>No data</>);
-        return(<ShowMarkdown item={content}/>);
+        if (!content) return (<>No data</>);
+        return (<ShowMarkdown item={content}/>);
     }
 
     const cardStyle = 'prose w-96 mt-5'
@@ -28,7 +28,7 @@ const Technical = async () => {
                 && <ShowMarkdown item={data['Technical 1']}/>}
 
 
-            <Flex gap='3' wrap='wrap' width='100%' align='stretch' >
+            <Flex gap='3' wrap='wrap' width='100%' align='stretch'>
 
                 <Card className={cardStyle}>
                     {getCard(data!['Technical 2'])}

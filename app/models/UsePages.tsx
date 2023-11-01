@@ -16,7 +16,7 @@ const UsePages = async (title: string) => {
         }
     });
 
-    if(!data) return null;
+    if (!data) return null;
 
     // index content by content title
     const content: PageMap = {};

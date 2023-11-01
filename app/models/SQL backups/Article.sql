@@ -1,4 +1,6 @@
-INSERT INTO jerryhobby.Article (id, date, title, summary, text, userId, categoryId, image, tags, commentsEnabled) VALUES (1, '2023-11-01 02:07:05.096', 'Hidden Customer Acquisition Costs', 'Customer acquisition costs are higher than ever and it is easier to lose customers than ever.', '# Hidden Customer Acquisition Costs
+INSERT INTO jerryhobby.Article (id, date, title, summary, text, userId, categoryId, image, tags, commentsEnabled)
+VALUES (1, '2023-11-01 02:07:05.096', 'Hidden Customer Acquisition Costs',
+        'Customer acquisition costs are higher than ever and it is easier to lose customers than ever.', '# Hidden Customer Acquisition Costs
 
 ## The Problem
 Calculating customer acquisition costs is primary a calculation
@@ -22,7 +24,9 @@ more than they paid for.  It\'s more than worth it when you factor in
 the high costs of losing multiple customers and potential customers.
 
 ', 'cloeq3vrb0000r03jx0mf7ke5', 1, null, null, 1);
-INSERT INTO jerryhobby.Article (id, date, title, summary, text, userId, categoryId, image, tags, commentsEnabled) VALUES (2, '2023-11-01 02:07:05.156', 'Are you a leader? Or a boss?', 'Modern leadership models are critical to employee retention.', '# Are you a Leader or a Boss?
+INSERT INTO jerryhobby.Article (id, date, title, summary, text, userId, categoryId, image, tags, commentsEnabled)
+VALUES (2, '2023-11-01 02:07:05.156', 'Are you a leader? Or a boss?',
+        'Modern leadership models are critical to employee retention.', '# Are you a Leader or a Boss?
 
 Management styles vary depending on the company culture, the leadership personalities, and the nature
 of the work.  Some companies are very hierarchical and have a very top-down management style.  Other
@@ -85,7 +89,9 @@ way to do that.
 
 
 ', 'cloeq3vrb0000r03jx0mf7ke5', 1, null, null, 1);
-INSERT INTO jerryhobby.Article (id, date, title, summary, text, userId, categoryId, image, tags, commentsEnabled) VALUES (3, '2023-11-01 02:07:05.208', 'Tips for Managing a Remote or Distributed Team', 'Out of site?  Or out of sight?', '# Tips for Managing a Remote or Distributed Team
+INSERT INTO jerryhobby.Article (id, date, title, summary, text, userId, categoryId, image, tags, commentsEnabled)
+VALUES (3, '2023-11-01 02:07:05.208', 'Tips for Managing a Remote or Distributed Team',
+        'Out of site?  Or out of sight?', '# Tips for Managing a Remote or Distributed Team
 
 In today\'s fast-paced and interconnected world, remote work has become increasingly prevalent. Many organizations are embracing the flexibility and advantages of having remote or distributed teams. However, managing a team that is scattered across different locations can pose unique challenges for leaders. To ensure your remote team stays productive and engaged, here are some valuable tips for effective remote team management.
 
@@ -133,7 +139,8 @@ Managing a remote or distributed team presents its own set of challenges, but wi
 
 Remember, successful remote team management requires ongoing effort and a commitment to creating a positive and inclusive remote work culture.
 ', 'cloeq3vrb0000r03jx0mf7ke5', 1, null, null, 1);
-INSERT INTO jerryhobby.Article (id, date, title, summary, text, userId, categoryId, image, tags, commentsEnabled) VALUES (4, '2023-11-01 02:07:05.266', 'Building a High-Performing Team', 'Building a High-Performing Team: Strategies for New Supervisors
+INSERT INTO jerryhobby.Article (id, date, title, summary, text, userId, categoryId, image, tags, commentsEnabled)
+VALUES (4, '2023-11-01 02:07:05.266', 'Building a High-Performing Team', 'Building a High-Performing Team: Strategies for New Supervisors
 ', '# Building a High-Performing Team: Strategies for New Supervisors
 
 Congratulations on your new role as a supervisor! As you embark on this exciting journey, one of your primary responsibilities will be to build and lead a high-performing team. A successful team doesn\'t just happen by chance; it\'s the result of careful planning, effective leadership, and a commitment to fostering a positive work environment. In this blog post, we\'ll explore some key strategies for new supervisors to build and maintain a high-performing team.
@@ -182,7 +189,9 @@ Building a high-performing team takes time and effort, but the rewards are worth
 
 Remember that leadership is an ongoing learning process, and your dedication to personal growth and improvement will ultimately benefit your team and organization. Best of luck on your journey to becoming an exceptional team leader!
 ', 'cloeq3vrb0000r03jx0mf7ke5', 1, null, null, 1);
-INSERT INTO jerryhobby.Article (id, date, title, summary, text, userId, categoryId, image, tags, commentsEnabled) VALUES (5, '2023-11-01 02:07:05.302', 'Essential Programming Concepts', '5 Essential Programming Concepts Every Developer Should Know', '# 5 Essential Programming Concepts Every Developer Should Know
+INSERT INTO jerryhobby.Article (id, date, title, summary, text, userId, categoryId, image, tags, commentsEnabled)
+VALUES (5, '2023-11-01 02:07:05.302', 'Essential Programming Concepts',
+        '5 Essential Programming Concepts Every Developer Should Know', '# 5 Essential Programming Concepts Every Developer Should Know
 
 Programming is a vast field with many languages and tools to choose from. Whether you\'re a beginner or an experienced developer, there are certain fundamental programming concepts that are essential to grasp. In this article, we\'ll explore five of these key concepts:
 ```
@@ -200,8 +209,10 @@ Programming is a vast field with many languages and tools to choose from. Whethe
 ```
 5. "Code always works if you don\'t test it." - Anonymous
 ```
-Mastering these concepts will provide a solid foundation for your programming journey, regardless of the language you choose to work with.', 'cloeq3vrb0000r03jx0mf7ke5', 2, null, null, 1);
-INSERT INTO jerryhobby.Article (id, date, title, summary, text, userId, categoryId, image, tags, commentsEnabled) VALUES (6, '2023-11-01 02:07:05.382', 'Cross-Platform Programming', 'For platform-independent programming that targets Windows, macOS, iOS, and Android, several languages and frameworks have gained popularity due to their ability to write cross-platform code. Here are some of the most popular choices:
+Mastering these concepts will provide a solid foundation for your programming journey, regardless of the language you choose to work with.',
+        'cloeq3vrb0000r03jx0mf7ke5', 2, null, null, 1);
+INSERT INTO jerryhobby.Article (id, date, title, summary, text, userId, categoryId, image, tags, commentsEnabled)
+VALUES (6, '2023-11-01 02:07:05.382', 'Cross-Platform Programming', 'For platform-independent programming that targets Windows, macOS, iOS, and Android, several languages and frameworks have gained popularity due to their ability to write cross-platform code. Here are some of the most popular choices:
 ', '# Cross-Platform Programming
 
 For platform-independent programming that targets Windows, macOS, iOS, and Android, several languages and frameworks have gained popularity due to their ability to write cross-platform code. Here are some of the most popular choices:
@@ -259,8 +270,10 @@ consumers of computer science." - Maria Klawe
 **Language:** JavaScript, HTML, CSS
 
 **Description:** NW.js is a framework for creating desktop applications using web technologies. It supports Windows, macOS, and Linux.
-The choice of language and framework depends on your specific project requirements, familiarity with the technology stack, and the user experience you aim to deliver. Each of these options has its strengths and weaknesses, so consider your development goals and constraints carefully when making a decision.', 'cloeq3vrb0000r03jx0mf7ke5', 2, null, null, 1);
-INSERT INTO jerryhobby.Article (id, date, title, summary, text, userId, categoryId, image, tags, commentsEnabled) VALUES (7, '2023-11-01 02:07:05.438', 'The Art of Problem-Solving in Programming', 'Programming is not just about writing code; it\'s about solving problems. Here are some tips to improve your problem-solving skills as a programmer:
+The choice of language and framework depends on your specific project requirements, familiarity with the technology stack, and the user experience you aim to deliver. Each of these options has its strengths and weaknesses, so consider your development goals and constraints carefully when making a decision.',
+        'cloeq3vrb0000r03jx0mf7ke5', 2, null, null, 1);
+INSERT INTO jerryhobby.Article (id, date, title, summary, text, userId, categoryId, image, tags, commentsEnabled)
+VALUES (7, '2023-11-01 02:07:05.438', 'The Art of Problem-Solving in Programming', 'Programming is not just about writing code; it\'s about solving problems. Here are some tips to improve your problem-solving skills as a programmer:
 ', '# The Art of Problem-Solving in Programming
 
 Programming is not just about writing code; it\'s about solving problems. Here are some tips to improve your problem-solving skills as a programmer:
@@ -290,8 +303,10 @@ Understand the Problem: Before you start coding, ensure you fully understand the
 7. "It\'s not a bug. It\'s an
 undocumented feature." - Anonymous
 ```
-Remember that problem-solving in programming is not just about finding any solution; it\'s about finding the most efficient and elegant one. Developing strong problem-solving skills will make you a more proficient and confident programmer.', 'cloeq3vrb0000r03jx0mf7ke5', 2, null, null, 1);
-INSERT INTO jerryhobby.Article (id, date, title, summary, text, userId, categoryId, image, tags, commentsEnabled) VALUES (8, '2023-11-01 02:07:05.509', 'Which Programming Language Should You Learn', 'Choosing which programming language to learn can be a significant decision, as it depends on your goals, interests, and the applications you have in mind. Here\'s a step-by-step guide to help you decide:
+Remember that problem-solving in programming is not just about finding any solution; it\'s about finding the most efficient and elegant one. Developing strong problem-solving skills will make you a more proficient and confident programmer.',
+        'cloeq3vrb0000r03jx0mf7ke5', 2, null, null, 1);
+INSERT INTO jerryhobby.Article (id, date, title, summary, text, userId, categoryId, image, tags, commentsEnabled)
+VALUES (8, '2023-11-01 02:07:05.509', 'Which Programming Language Should You Learn', 'Choosing which programming language to learn can be a significant decision, as it depends on your goals, interests, and the applications you have in mind. Here\'s a step-by-step guide to help you decide:
 ', '# Which Programming Language Should You Learn
 
 Choosing which programming language to learn can be a significant decision, as it depends on your goals, interests, and the applications you have in mind. Here\'s a step-by-step guide to help you decide:
@@ -351,8 +366,10 @@ Don\'t be afraid to experiment with different languages by working on small proj
 ## Stay Flexible:
 
 Remember that learning a programming language is a valuable skill, but it doesn\'t mean you\'re limited to just one. As you gain experience, you can easily pick up additional languages to expand your skill set.
-In the end, the "best" programming language to learn depends on your unique circumstances and aspirations. Keep in mind that learning a programming language is just one step in your journey; the ability to solve problems, think logically, and adapt to new technologies are skills that will serve you well regardless of the language you choose.', 'cloeq3vrb0000r03jx0mf7ke5', 2, null, null, 1);
-INSERT INTO jerryhobby.Article (id, date, title, summary, text, userId, categoryId, image, tags, commentsEnabled) VALUES (9, '2023-11-01 02:07:05.567', 'Zero Origin Numbers', 'One of the topics new programmers often struggle with is the concept of zero origin numbers.
+In the end, the "best" programming language to learn depends on your unique circumstances and aspirations. Keep in mind that learning a programming language is just one step in your journey; the ability to solve problems, think logically, and adapt to new technologies are skills that will serve you well regardless of the language you choose.',
+        'cloeq3vrb0000r03jx0mf7ke5', 2, null, null, 1);
+INSERT INTO jerryhobby.Article (id, date, title, summary, text, userId, categoryId, image, tags, commentsEnabled)
+VALUES (9, '2023-11-01 02:07:05.567', 'Zero Origin Numbers', 'One of the topics new programmers often struggle with is the concept of zero origin numbers.
 This is a fancy way of saying that the first item in a list is item 0, not item 1.
 This is a concept that is used in many programming languages, and it is important to understand it.
 ', '# Zero Origin Numbers
@@ -437,7 +454,8 @@ so you add 1.
 
 The count is how many.  The offset is "how far from the base", otherwise, the index position.
  ', 'cloeq3vrb0000r03jx0mf7ke5', 2, null, null, 1);
-INSERT INTO jerryhobby.Article (id, date, title, summary, text, userId, categoryId, image, tags, commentsEnabled) VALUES (10, '2023-11-01 02:07:05.617', 'The Importance of Code Comments in Programming', 'Code comments are often an overlooked aspect of programming, but they play a vital role in software development. Here\'s why they are important:
+INSERT INTO jerryhobby.Article (id, date, title, summary, text, userId, categoryId, image, tags, commentsEnabled)
+VALUES (10, '2023-11-01 02:07:05.617', 'The Importance of Code Comments in Programming', 'Code comments are often an overlooked aspect of programming, but they play a vital role in software development. Here\'s why they are important:
 ', '# The Importance of Code Comments in Programming
 
 Code comments are often an overlooked aspect of programming, but they play a vital role in software development. Here\'s why they are important:
@@ -455,8 +473,10 @@ explain it, it\'s not funny." - Cory House
 
 5. **Debugging:** When debugging, comments can help you pinpoint the source of issues. By adding comments to your code, you can isolate problematic sections and streamline the debugging process.
 
-In summary, code comments are an essential part of professional programming. They enhance code readability, aid in collaboration, and make maintenance and debugging more efficient.', 'cloeq3vrb0000r03jx0mf7ke5', 2, null, null, 1);
-INSERT INTO jerryhobby.Article (id, date, title, summary, text, userId, categoryId, image, tags, commentsEnabled) VALUES (11, '2023-11-01 02:07:05.663', 'Application Code Testing', 'All popular programming tools support automated testing.  These tools require you to write code just to test other code that you have, or will, write for you application.
+In summary, code comments are an essential part of professional programming. They enhance code readability, aid in collaboration, and make maintenance and debugging more efficient.',
+        'cloeq3vrb0000r03jx0mf7ke5', 2, null, null, 1);
+INSERT INTO jerryhobby.Article (id, date, title, summary, text, userId, categoryId, image, tags, commentsEnabled)
+VALUES (11, '2023-11-01 02:07:05.663', 'Application Code Testing', 'All popular programming tools support automated testing.  These tools require you to write code just to test other code that you have, or will, write for you application.
 ', '# Application Code Testing
 
 ## What is application code testing?
@@ -510,7 +530,8 @@ Testing frameworks won’t catch everything, however, they will catch all the mo
 Code testing frameworks and methodologies will save you money in the long run by creating a far more reliable product.  This saves you from issue like my example above, but also in the reporting, tracking, and fixing of other errors after release.  Not to mention the customer confidence impact of releasing buggy code into production.
 
 ', 'cloeq3vrb0000r03jx0mf7ke5', 2, null, null, 1);
-INSERT INTO jerryhobby.Article (id, date, title, summary, text, userId, categoryId, image, tags, commentsEnabled) VALUES (12, '2023-11-01 02:07:05.701', 'Hello World', 'There are many programming languages.  They pretty much all do the same thing,
+INSERT INTO jerryhobby.Article (id, date, title, summary, text, userId, categoryId, image, tags, commentsEnabled)
+VALUES (12, '2023-11-01 02:07:05.701', 'Hello World', 'There are many programming languages.  They pretty much all do the same thing,
 but they have different syntax.  Each languange promises to solve a different
 problem, but they all solve the same problem.  ', '# Programming Languages
 
@@ -600,7 +621,8 @@ They all do the same thing, but they all look different due to the syntax of the
     let myString: string = "Hello World";
     ```
 ', 'cloeq3vrb0000r03jx0mf7ke5', 2, null, null, 1);
-INSERT INTO jerryhobby.Article (id, date, title, summary, text, userId, categoryId, image, tags, commentsEnabled) VALUES (13, '2023-11-01 02:07:05.758', 'The Myth of Artificial Intelligence', 'In the ever-evolving landscape of technology, artificial intelligence (AI) has often been heralded as a game-changer, a magical force capable of revolutionizing industries and transforming the way we work and live. While AI has indeed made significant strides, it\'s essential to debunk some of the myths surrounding it, acknowledge the challenges, and maintain a positive perspective as we navigate the exciting but complex world of AI.
+INSERT INTO jerryhobby.Article (id, date, title, summary, text, userId, categoryId, image, tags, commentsEnabled)
+VALUES (13, '2023-11-01 02:07:05.758', 'The Myth of Artificial Intelligence', 'In the ever-evolving landscape of technology, artificial intelligence (AI) has often been heralded as a game-changer, a magical force capable of revolutionizing industries and transforming the way we work and live. While AI has indeed made significant strides, it\'s essential to debunk some of the myths surrounding it, acknowledge the challenges, and maintain a positive perspective as we navigate the exciting but complex world of AI.
 ', '# The Myth of Artificial Intelligence
 
 In the ever-evolving landscape of technology, artificial intelligence (AI) has often been heralded as a game-changer, a magical force capable of revolutionizing industries and transforming the way we work and live. While AI has indeed made significant strides, it\'s essential to debunk some of the myths surrounding it, acknowledge the challenges, and maintain a positive perspective as we navigate the exciting but complex world of AI.
@@ -625,4 +647,5 @@ Despite the challenges and misconceptions, the future of AI is exceptionally pro
 
 As we journey into the future of AI, we should embrace the potential while acknowledging the current limitations. Tools like ChatGPT are incredibly valuable but require ongoing refinement. Plagiarism concerns remind us of the importance of ethical AI usage, while the challenges in implementing AI for various business applications encourage us to be diligent in our endeavors.
 
-In conclusion, the myth of AI as an all-knowing, perfect entity is just that—a myth. It\'s a powerful tool that, when used responsibly, can bring about significant positive change. Plagiarism concerns and implementation challenges are part of the learning curve. By embracing AI\'s potential while acknowledging its current state, we can navigate the evolving landscape with optimism and ensure that AI contributes to a brighter, more innovative future. It\'s a journey worth taking, one step at a time.', 'cloeq3vrb0000r03jx0mf7ke5', 3, null, null, 1);
+In conclusion, the myth of AI as an all-knowing, perfect entity is just that—a myth. It\'s a powerful tool that, when used responsibly, can bring about significant positive change. Plagiarism concerns and implementation challenges are part of the learning curve. By embracing AI\'s potential while acknowledging its current state, we can navigate the evolving landscape with optimism and ensure that AI contributes to a brighter, more innovative future. It\'s a journey worth taking, one step at a time.',
+        'cloeq3vrb0000r03jx0mf7ke5', 3, null, null, 1);

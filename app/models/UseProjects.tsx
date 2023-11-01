@@ -18,7 +18,7 @@ const UseProjects = async (title: string = '') => {
         }
     );
 
-    if(!data) return null;
+    if (!data) return null;
 
     // index content by content title
     const content: ProjectMap = {};

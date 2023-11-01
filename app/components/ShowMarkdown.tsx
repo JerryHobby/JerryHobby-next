@@ -10,7 +10,7 @@ interface Props {
 }
 
 const ShowMarkdown = ({item = null, index = 0}: Props) => {
-    if(!item) return null;
+    if (!item) return null;
     return (
         <ReactMarkdown className='reactMarkDown' key={index} remarkPlugins={[gfm]}>
             {item.text || 'Loading...'}
