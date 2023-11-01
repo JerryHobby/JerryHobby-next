@@ -14,37 +14,38 @@ const Resume = async () => {
     const data = await usePages(pagePrefix);
 
     function getCard(content?: Page) {
-        if(!content) return (<>No data</>);
-        return(<ShowMarkdown item={content}/>);
+        if (!content) return (<>No data</>);
+        return (<ShowMarkdown item={content}/>);
     }
 
-    const cardStyle = 'prose w-96 mt-5'
+    const cardStyle = 'prose w-96 mb-5'
 
     return (
         <main>
             <Title title={title} icon={icon}/>
 
-            <div className="prose w-4/12 border rounded-box p-5">
-            <Certificates />
-            </div>
 
             {(data) && data['Resumes 1']
                 && <ShowMarkdown item={data['Resumes 1']}/>}
 
 
-            <Flex gap='3' wrap='wrap' width='100%' align='stretch' >
+            <Flex gap='5' mt='9' wrap='wrap' width='100%' align='stretch'>
+                <div className="prose w-4/12 border rounded-box p-5">
+                    <Certificates/>
+                </div>
+                <div>
+                    <Card className={cardStyle}>
+                        {getCard(data!['Resumes 2'])}
+                    </Card>
 
-                <Card className={cardStyle}>
-                    {getCard(data!['Resumes 2'])}
-                </Card>
+                    <Card className={cardStyle}>
+                        {getCard(data!['Resumes 3'])}
+                    </Card>
 
-                <Card className={cardStyle}>
-                    {getCard(data!['Resumes 3'])}
-                </Card>
-
-                <Card className={cardStyle}>
-                    {getCard(data!['Resumes 4'])}
-                </Card>
+                    <Card className={cardStyle}>
+                        {getCard(data!['Resumes 4'])}
+                    </Card>
+                </div>
             </Flex>
         </main>
     )

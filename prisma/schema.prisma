@@ -105,3 +105,13 @@ model Page {
   title String   @unique
   text  String   @db.Text
 }
+
+model Project {
+  id           Int      @id @default(autoincrement())
+  date         DateTime @default(now())
+  title        String   @unique
+  text         String   @db.Text
+  tools        String
+  url          String
+  thumbnailUrl String
+}
