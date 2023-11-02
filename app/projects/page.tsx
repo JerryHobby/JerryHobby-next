@@ -21,7 +21,7 @@ const Projects = async () => {
         if (!project) return (<>No data</>);
         return (
             <div>
-                <Link href={`${project.url}`}>
+                <Link href={`${project.url}`} target="_blank">
                     <Heading size='5' className='pb-5' align='center'>{project.title}</Heading>
                     <Flex align='start' gap='1'>
                         <Image src={project.thumbnailUrl}
