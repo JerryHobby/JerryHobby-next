@@ -1,9 +1,6 @@
 import React from 'react';
 import Title from "@/app/components/Title";
 
-interface Props {
-}
-
 const AdminHomePage = () => {
     return (
         <>
@@ -11,7 +8,5 @@ const AdminHomePage = () => {
         </>
     );
 };
-
-AdminHomePage.propTypes = {};
 
 export default AdminHomePage;

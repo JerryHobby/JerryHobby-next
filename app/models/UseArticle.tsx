@@ -6,16 +6,19 @@
 
 import prisma from "@/prisma/client";
 
-export const UseArticles = async () => {
-    return prisma.article.findMany(
-        {
+interface Props {
+    id: string
+}
+
+const UseArticle = async ({id}:Props) => {
+        return prisma.article.findUnique({
+            where: {
+                id: parseInt( id)
+            },
             include: {
                 category: true
-            },
-            orderBy: {
-                date: 'desc'
             }
         });
 };
 
-export default UseArticles;
+export default UseArticle;
