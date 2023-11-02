@@ -5,9 +5,6 @@ import {Card, Flex} from "@radix-ui/themes";
 import ShowMarkdown from "@/app/components/ShowMarkdown";
 import {Page} from ".prisma/client";
 
-interface Props {
-}
-
 const Leadership = async () => {
 
     const title = "Leadership Skills"
@@ -21,7 +18,9 @@ const Leadership = async () => {
         return (<ShowMarkdown item={content}/>);
     }
 
-    const cardStyle = 'prose w-96 mt-5'
+    const cardStyle = 'prose w-80 mt-5'
+    const cardStyleXL = 'prose w-[35rem] mt-5'
+
 
     return (
         <main>
@@ -37,7 +36,7 @@ const Leadership = async () => {
                     {getCard(data!['Leadership 2'])}
                 </Card>
 
-                <Card className={cardStyle}>
+                <Card className={cardStyleXL}>
                     {getCard(data!['Leadership 3'])}
                 </Card>
             </Flex>

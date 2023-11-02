@@ -1,47 +1,41 @@
-import './globals.css';
-import './reactMarkdown.css';
 import type {Metadata} from 'next'
-import {Inter, Roboto} from 'next/font/google'
-import localFont from 'next/font/local'
-import NavBar from "@/app/components/NavBar";
-import AuthProvider from "@/app/auth/provider";
-import GoogleAnalytics from "@/app/GoogleAnalytics";
-import Footer from "@/app/components/Footer";
+import {Inter} from 'next/font/google';
 import '@radix-ui/themes/styles.css';
-import {Theme} from '@radix-ui/themes';
+import './theme-config.css'
+import './globals.css'
+import './reactMarkdown.css';
+import {Container, Theme} from '@radix-ui/themes';
+import {Footer, NavBar} from "@/app/components";
+import AuthProvider from "@/app/auth/AuthProvider";
 
-const inter = Inter({subsets: ['latin']})
-const roboto = Roboto({
+const inter = Inter({
     subsets: ['latin'],
-    weight: ['100', '300', '400', '500', '700', '900']
-})
+    display: 'swap',
+    variable: '--font-inter',
+});
 
-const poppins = localFont({
-    src: '../public/fonts/Poppins/Poppins-Regular.ttf',
-    variable: '--font-poppins',
-})
 export const metadata: Metadata = {
-    title: 'JerryHobby.com - Professional Software Engineer',
-    description: 'Personal home page of Jerry Hobby, a professional software engineer based in Houston, TX.',
-}
+    title: 'JerryHobby.com - Jerry Hobby',
+    description: 'Personal website for Jerry Hobby.',
+};
 
-
-export default function RootLayoutScrollable({
-                                                 children,
-                                             }: {
+export default function RootLayout({
+                                       children,
+                                   }: {
     children: React.ReactNode
 }) {
     return (
-        <html lang="en" data-theme="winter">
-        <GoogleAnalytics/>
-        <body className={poppins.variable}>
-        <Theme>
-            <AuthProvider>
+        <html lang="en" className={inter.variable}>
+        <body className={inter.className}>
+        <AuthProvider>
+            <Theme>
                 <header className="sticky top-0 z-50"><NavBar/></header>
-                <main className="relative">{children}</main>
-                <footer className="sticky bottom-0 z-50"><Footer/></footer>
-            </AuthProvider>
-        </Theme>
+                <Container className='content-center'>
+                    {children}
+                </Container>
+                <Footer/>
+            </Theme>
+        </AuthProvider>
         </body>
         </html>
     )

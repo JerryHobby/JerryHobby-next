@@ -15,29 +15,28 @@
 
 body {
     color: rgb(var(--foreground-rgb));
-    padding: 0rem;
+    padding: 0;
 }
 
 main {
     margin: 0 auto;
-    #max-width: 64rem;
     padding: 1rem 1rem;
 }
 
 @layer base {
     h1 {
-        @apply text-3xl font-bold py-2 mb-3 font-poppins;
+        @apply text-2xl font-bold mb-3;
     }
 
     h2 {
-        @apply text-2xl font-bold py-2;
+        @apply text-xl font-bold;
     }
 
     h3 {
-        @apply text-xl font-bold  py-2;
+        @apply text-lg font-bold;
     }
 
     title {
-        @apply text-3xl text-center font-bold py-2;
+        @apply text-3xl text-center font-bold;
     }
 }

@@ -18,7 +18,8 @@ const Technical = async () => {
         return (<ShowMarkdown item={content}/>);
     }
 
-    const cardStyle = 'prose w-96 mt-5'
+    const cardStyle = 'prose w-64 mt-5'
+    const cardStyleXL = 'prose w-[35rem] mt-5'
 
     return (
         <main>
@@ -37,11 +38,12 @@ const Technical = async () => {
                 <Card className={cardStyle}>
                     {getCard(data!['Technical 3'])}
                 </Card>
-
-                <Card className={cardStyle}>
+                <Card className={cardStyleXL}>
                     {getCard(data!['Technical 4'])}
                 </Card>
             </Flex>
+
+
         </main>
     )
 };

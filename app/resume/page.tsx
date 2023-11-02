@@ -41,10 +41,6 @@ const Resume = async () => {
                     <Card className={cardStyle}>
                         {getCard(data!['Resumes 3'])}
                     </Card>
-
-                    <Card className={cardStyle}>
-                        {getCard(data!['Resumes 4'])}
-                    </Card>
                 </div>
             </Flex>
         </main>

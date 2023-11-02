@@ -23,9 +23,23 @@
     white-space: pre-wrap;
 }
 
-.reactMarkDown h1, h2, h3 {
-    padding-top: 2.5rem;
-    padding-bottom: 1.5rem;
+.reactMarkDown h1 {
+    padding-top: 1rem;
+    padding-bottom: 0.75rem;
+}
+
+.reactMarkDown h2 {
+    padding-top: 0;
+    padding-bottom: 0rem;
+}
+
+.reactMarkDown h3 {
+    padding-top: 0;
+    padding-bottom: 0rem;
+}
+
+.reactMarkDown p {
+    padding-bottom: 1rem;
 }
 
 .reactMarkDown ul {
@@ -39,3 +53,9 @@
     display: list-item;
     text-align: -webkit-match-parent;
 }
+
+.reactMarkDown a {
+    color: dodgerblue;
+    font-weight: bold;
+}
+

@@ -18,7 +18,7 @@ const Experience = async () => {
         return (<ShowMarkdown item={content}/>);
     }
 
-    const cardStyle = 'prose w-96 mt-5'
+    const cardStyle = 'prose w-full mt-5'
 
     return (
         <main>
