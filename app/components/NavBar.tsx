@@ -288,8 +288,8 @@ const ListItem = React.forwardRef(({href, title, children, className}: Props) =>
                 )}
                 href={href}
             >
-                <div className="hover:underline text-violet12 mb-[5px] font-medium leading-[1.2]">{title}</div>
-                <p className="text-mauve11 leading-[1.4]">{children}</p>
+                <div className="hover:underline text-violet12! mb-[5px] font-extrabold! leading-[1.2]">{title}</div>
+                <p className="text-mauve11! font-extrabold! leading-[1.4]">{children}</p>
             </a>
         </NavigationMenu.Link>
     </li>
