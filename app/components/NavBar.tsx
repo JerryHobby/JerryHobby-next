@@ -282,8 +282,8 @@ interface Props {
 }
 
 const ListItem = React.forwardRef(({href, title, children, className}: Props, ref) => {
-    const subNavLinkClassName = '!font-semi-bold focus:shadow-[0_0_0_2px] focus:shadow-violet7 hover:!text-accent-focus block select-none rounded-[6px] p-3 text-[15px] leading-none no-underline outline-none transition-colors';
-    const subNavTitleClassName = "hover:underline hover:text-accent-focus mb-[5px] !font-semibold leading-[1.2]";
+    const subNavLinkClassName = '!font-semi-bold focus:shadow-[0_0_0_2px] focus:shadow block select-none rounded-[6px] p-3 text-[15px] leading-none no-underline outline-none transition-colors';
+    const subNavTitleClassName = "hover:underline mb-[5px] !font-semibold leading-[1.2]";
     return (
         <li>
             <NavigationMenu.Link asChild>
