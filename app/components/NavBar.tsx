@@ -283,13 +283,13 @@ const ListItem = React.forwardRef(({href, title, children, className}: Props) =>
         <NavigationMenu.Link asChild>
             <a
                 className={classNames(
-                    'focus:shadow-[0_0_0_2px] focus:shadow-violet7 hover:bg-mauve3 block select-none rounded-[6px] p-3 text-[15px] leading-none no-underline outline-none transition-colors',
+                    'focus:shadow-[0_0_0_2px] focus:shadow-violet7 hover:!bg-mauve3 block select-none rounded-[6px] p-3 text-[15px] leading-none no-underline outline-none transition-colors',
                     {className}
                 )}
                 href={href}
             >
-                <div className="hover:underline text-violet12! mb-[5px] font-extrabold! leading-[1.2]">{title}</div>
-                <p className="text-mauve11! font-extrabold! leading-[1.4]">{children}</p>
+                <div className="hover:underline !text-violet12 mb-[5px] font-extrabold! leading-[1.2]">{title}</div>
+                <p className="!text-mauve11 !font-extrabold leading-[1.4]">{children}</p>
             </a>
         </NavigationMenu.Link>
     </li>
