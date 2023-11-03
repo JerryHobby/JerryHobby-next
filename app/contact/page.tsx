@@ -14,8 +14,8 @@ const Contact = async () => {
     const data = await usePages(pagePrefix);
 
     function getCard(content?: Page) {
-        if (!content) return (<>No data</>);
-        return (<ShowMarkdown item={content}/>);
+        if (!content?.text) return (<>No data</>);
+        return ( <ShowMarkdown item={content}/>);
     }
 
     const cardStyle = 'prose w-96 mt-5 p-5 bg-gray-100 rounded-md'

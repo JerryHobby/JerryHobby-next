@@ -27,8 +27,9 @@ const Projects = async () => {
                         <Image src={project.thumbnailUrl}
                                alt={'App Thumbnail'}
                                width={100}
-                               height={100}
-                               className={'mt-2 rounded-lg object-contain w-300'}
+                               height={0}
+                               sizes="100vw"
+                               className={'mt-2 '}
                         />
                         <Box className='px-4'>{project.text}</Box>
                     </Flex>

@@ -6,8 +6,6 @@ export type PageMap = {
 }
 
 const UsePages = async (title: string) => {
-
-
     const data = await prisma.page.findMany({
         where: {
             title: {
