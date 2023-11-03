@@ -1,10 +1,6 @@
 'use client'
 import React from 'react';
-import Link from "next/link";
-import {FaArrowCircleRight} from "react-icons/fa";
-import {BsPersonVcard} from "react-icons/bs";
 import {useSession} from "next-auth/react";
-import {Session} from "next-auth";
 import {
     BiBookAlt,
     BiBuildings,
@@ -14,11 +10,13 @@ import {
     BiFile,
     BiHive,
     BiHome,
-    BiSitemap,
-    BiSlider
+    BiSitemap
 } from "react-icons/bi";
 
 import Image from "next/image";
+import * as NavigationMenu from '@radix-ui/react-navigation-menu';
+import classNames from 'classnames';
+import {CaretDownIcon} from '@radix-ui/react-icons';
 
 const iconClass = 'inline align-text-top text-md mr-1';
 const navBarGradientGray = "bg-gradient-to-b from-0% via-75% to-100% from-gray-100 via-gray-50 to-gray-100";
@@ -140,18 +138,22 @@ const navBarLeftItems = [
 // };
 //
 
-import * as NavigationMenu from '@radix-ui/react-navigation-menu';
-import classNames from 'classnames';
-import { CaretDownIcon } from '@radix-ui/react-icons';
-
 const NavBar = () => {
     const {status, data: session} = useSession();
+    const navBarClassName = "center m-0 flex list-none rounded-[6px] bg-gray-50 p-1 shadow-gray-500 shadow-[0_1px_3px]"
+    const navContentClassName = "data-[motion=from-start]:animate-enterFromLeft data-[motion=from-end]:animate-enterFromRight data-[motion=to-start]:animate-exitToLeft data-[motion=to-end]:animate-exitToRight absolute top-0 left-0 w-full sm:w-auto"
+    const linkClassName = "text-violet11 hover:underline focus:shadow-violet7 block select-none rounded-[4px] px-3 py-2 text-[15px] font-medium leading-none no-underline outline-none focus:shadow-[0_0_0_2px]";
+    const dropTriggerClassName = "text-violet11 hover:bg-violet3 focus:shadow-violet7 group flex select-none items-center justify-between gap-[2px] rounded-[4px] px-3 py-2 text-[15px] font-medium leading-none outline-none focus:shadow-[0_0_0_2px]";
+    const caretClassName = "text-violet10 relative top-[1px] transition-transform duration-[250] ease-in group-data-[state=open]:-rotate-180";
+    const ul1ColClassName = "border-2 bg-gray-50 one m-0 grid list-none gap-x-[10px] p-[22px] sm:w-[500px] sm:grid-cols-[0.75fr_1fr]";
+    const ul2ColClassName = "border-2 bg-gray-50 m-0 grid list-none gap-x-[10px] p-[22px] sm:w-[300px] sm:grid-flow-col sm:grid-rows-2";
+
     return (
         <NavigationMenu.Root className="relative z-[1] flex w-screen justify-center">
-            <NavigationMenu.List className="center shadow-gray-500 m-0 flex list-none rounded-[6px] bg-gray-50 p-1 shadow-[0_1px_3px]">
+            <NavigationMenu.List className={navBarClassName}>
                 <NavigationMenu.Item>
                     <NavigationMenu.Link
-                        className="text-violet11 hover:bg-violet3 focus:shadow-violet7 block select-none rounded-[4px] px-3 py-2 text-[15px] font-medium leading-none no-underline outline-none focus:shadow-[0_0_0_2px]"
+                        className={linkClassName}
                         href="/"
                     >
                         Home
@@ -160,7 +162,7 @@ const NavBar = () => {
 
                 <NavigationMenu.Item>
                     <NavigationMenu.Link
-                        className="text-violet11 hover:bg-violet3 focus:shadow-violet7 block select-none rounded-[4px] px-3 py-2 text-[15px] font-medium leading-none no-underline outline-none focus:shadow-[0_0_0_2px]"
+                        className={linkClassName}
                         href="/articles"
                     >
                         Articles
@@ -168,26 +170,26 @@ const NavBar = () => {
                 </NavigationMenu.Item>
 
                 <NavigationMenu.Item>
-                    <NavigationMenu.Trigger className="text-violet11 hover:bg-violet3 focus:shadow-violet7 group flex select-none items-center justify-between gap-[2px] rounded-[4px] px-3 py-2 text-[15px] font-medium leading-none outline-none focus:shadow-[0_0_0_2px]">
+                    <NavigationMenu.Trigger className={dropTriggerClassName}>
                         About Jerry
                         <CaretDownIcon
-                            className="text-violet10 relative top-[1px] transition-transform duration-[250] ease-in group-data-[state=open]:-rotate-180"
+                            className={caretClassName}
                             aria-hidden
                         />
                     </NavigationMenu.Trigger>
-                    <NavigationMenu.Content className="data-[motion=from-start]:animate-enterFromLeft data-[motion=from-end]:animate-enterFromRight data-[motion=to-start]:animate-exitToLeft data-[motion=to-end]:animate-exitToRight absolute top-0 left-0 w-full sm:w-auto">
-                        <ul className="border one m-0 grid list-none gap-x-[10px] p-[22px] sm:w-[500px] sm:grid-cols-[0.75fr_1fr]">
+                    <NavigationMenu.Content className={navContentClassName}>
+                        <ul className={ul1ColClassName}>
                             <li className="row-span-4 grid align-top">
                                 <NavigationMenu.Link asChild>
                                     <div>
                                         <Image src={'/images/jerry_hobby_headshot.png'}
                                                alt={'Jerry Hobby headshot'}
                                                width={200}
-                                                  height={300}
+                                               height={300}
                                                className={'rounded p-2'}
                                         />
                                         <div className="mt-2 text-[18px] text-center font-medium text-black">
-                                        Jerry Hobby
+                                            Jerry Hobby
                                         </div>
                                     </div>
                                 </NavigationMenu.Link>
@@ -209,15 +211,15 @@ const NavBar = () => {
                 </NavigationMenu.Item>
 
                 <NavigationMenu.Item>
-                    <NavigationMenu.Trigger className="text-violet11 hover:bg-violet3 focus:shadow-violet7 group flex select-none items-center justify-between gap-[2px] rounded-[4px] px-3 py-2 text-[15px] font-medium leading-none outline-none focus:shadow-[0_0_0_2px]">
+                    <NavigationMenu.Trigger className={dropTriggerClassName}>
                         Projects
                         <CaretDownIcon
-                            className="text-violet10 relative top-[1px] transition-transform duration-[250] ease-in group-data-[state=open]:-rotate-180"
+                            className={caretClassName}
                             aria-hidden
                         />
                     </NavigationMenu.Trigger>
                     <NavigationMenu.Content className="absolute top-0 left-0 w-full sm:w-auto">
-                        <ul className=" border m-0 grid list-none gap-x-[10px] p-[22px] sm:w-[300px] sm:grid-flow-col sm:grid-rows-2">
+                        <ul className={ul2ColClassName}>
                             <ListItem title="Demo Projects" href="/projects">
                                 Several demo projects in various languages.
                             </ListItem>
@@ -230,7 +232,7 @@ const NavBar = () => {
 
                 <NavigationMenu.Item>
                     <NavigationMenu.Link
-                        className="text-violet11 hover:bg-violet3 focus:shadow-violet7 block select-none rounded-[4px] px-3 py-2 text-[15px] font-medium leading-none no-underline outline-none focus:shadow-[0_0_0_2px]"
+                        className={linkClassName}
                         href="/contact"
                     >
                         Contact
@@ -240,7 +242,7 @@ const NavBar = () => {
                 {(status !== 'authenticated' || null) && (
                     <NavigationMenu.Item>
                         <NavigationMenu.Link
-                            className="text-violet11 hover:bg-violet3 focus:shadow-violet7 block select-none rounded-[4px] px-3 py-2 text-[15px] font-medium leading-none no-underline outline-none focus:shadow-[0_0_0_2px]"
+                            className={linkClassName}
                             href="/api/auth/signin"
                         >
                             Sign In
@@ -250,7 +252,7 @@ const NavBar = () => {
                 {(status === 'authenticated' || null) && (
                     <NavigationMenu.Item>
                         <NavigationMenu.Link
-                            className="text-violet11 hover:bg-violet3 focus:shadow-violet7 block select-none rounded-[4px] px-3 py-2 text-[15px] font-medium leading-none no-underline outline-none focus:shadow-[0_0_0_2px]"
+                            className={linkClassName}
                             href="/api/auth/signout"
                         >
                             Sign Out
@@ -258,14 +260,15 @@ const NavBar = () => {
                     </NavigationMenu.Item>
                 )}
 
-
-                <NavigationMenu.Indicator className="data-[state=visible]:animate-fadeIn data-[state=hidden]:animate-fadeOut top-full z-[1] flex h-[10px] items-end justify-center overflow-hidden transition-[width,transform_250ms_ease]">
-                    <div className="relative top-[70%] h-[10px] w-[10px] rotate-[45deg] rounded-tl-[2px] bg-white" />
+                <NavigationMenu.Indicator
+                    className="data-[state=visible]:animate-fadeIn data-[state=hidden]:animate-fadeOut top-full z-[1] flex h-[10px] items-end justify-center overflow-hidden transition-[width,transform_250ms_ease]">
+                    <div className="relative top-[70%] h-[10px] w-[10px] rotate-[45deg] rounded-tl-[2px] bg-white"/>
                 </NavigationMenu.Indicator>
             </NavigationMenu.List>
 
             <div className="perspective-[2000px] absolute top-full left-0 flex w-full justify-center">
-                <NavigationMenu.Viewport className="data-[state=open]:animate-scaleIn data-[state=closed]:animate-scaleOut relative mt-[10px] h-[var(--radix-navigation-menu-viewport-height)] w-full origin-[top_center] overflow-hidden rounded-[6px] bg-white transition-[width,_height] duration-300 sm:w-[var(--radix-navigation-menu-viewport-width)]" />
+                <NavigationMenu.Viewport
+                    className="data-[state=open]:animate-scaleIn data-[state=closed]:animate-scaleOut relative mt-[10px] h-[var(--radix-navigation-menu-viewport-height)] w-full origin-[top_center] overflow-hidden rounded-[6px] bg-white transition-[width,_height] duration-300 sm:w-[var(--radix-navigation-menu-viewport-width)]"/>
             </div>
         </NavigationMenu.Root>
     );
@@ -278,22 +281,27 @@ interface Props {
     className?: string;
 }
 
-const ListItem = React.forwardRef(({href, title, children, className}: Props) => (
-    <li>
-        <NavigationMenu.Link asChild>
-            <a
-                className={classNames(
-                    'focus:shadow-[0_0_0_2px] focus:shadow-violet7 hover:!bg-mauve3 block select-none rounded-[6px] p-3 text-[15px] leading-none no-underline outline-none transition-colors',
-                    {className}
-                )}
-                href={href}
-            >
-                <div className="hover:underline hover:text-accent mb-[5px] !font-semibold leading-[1.2]">{title}</div>
-                <p className="!text-gray-400 leading-[1.4]">{children}</p>
-            </a>
-        </NavigationMenu.Link>
-    </li>
-));
+const ListItem = React.forwardRef(({href, title, children, className}: Props, ref) => {
+    const subNavLinkClassName = '!font-semi-bold focus:shadow-[0_0_0_2px] focus:shadow-violet7 hover:!text-accent-focus block select-none rounded-[6px] p-3 text-[15px] leading-none no-underline outline-none transition-colors';
+    const subNavTitleClassName = "hover:underline hover:text-accent-focus mb-[5px] !font-semibold leading-[1.2]";
+    return (
+        <li>
+            <NavigationMenu.Link asChild>
+                <a
+                    className={classNames(
+                        subNavLinkClassName,
+                        {className}
+                    )}
+                    href={href}
+                >
+                    <div
+                        className={subNavTitleClassName}>{title}</div>
+                    <p className="!text-gray-500 leading-[1.4]">{children}</p>
+                </a>
+            </NavigationMenu.Link>
+        </li>
+    );
+});
 
 ListItem.displayName = 'ListItem';
 export default NavBar;
