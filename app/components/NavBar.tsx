@@ -28,7 +28,6 @@ const navBarDropShadow = " drop-shadow-[0_2px_3px_rgba(0,0,0,0.1)] border border
 const navBarStyle = navBarGradientGray + navBarDropShadow + "  flex space-x-1 pl-4 py-3 min-w-full text-xs"
 
 const logo = "/jh2.png";
-//const logo = "/images/jerrytoon.png";
 
 const navBarLeftItems = [
     {
@@ -114,10 +113,8 @@ const NavBar = () => {
 
 
     function rightNavBar(status: string | null, session: Session | null) {
-
-        //if (!session) return;
         return (
-            <div className="space-x-6 pr-4 text-xs ">
+            <div className="space-x-3 font-semibold pr-4 text-xs ">
 
                 {status === 'authenticated' && (
                     <Link className="whitespace-nowrap" href={'/users/editprofile/'}>
