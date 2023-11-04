@@ -2,9 +2,11 @@ import Title from "@/app/components/Title";
 import React from "react";
 import ShowMarkdown from "@/app/components/ShowMarkdown";
 import usePages from "@/app/models/UsePages";
-import {Page} from ".prisma/client";
 import {Flex} from "@radix-ui/themes";
 import Image from "next/image";
+import YoutubeEmbed from "@/app/components/YoutubeEmbed";
+import 'app/components/YouTubeEmbed.css'
+
 
 export default async function Home() {
 
@@ -26,7 +28,8 @@ export default async function Home() {
             </Flex>
             {(data) && data['Home 2']
                 && <ShowMarkdown item={data['Home 2']}/>}
-
+            <YoutubeEmbed embedId='wOZe14BmnTo'  />
+            // Wqf1fXR8WW4   pFHKEWKaXoQ
 
         </main>
     )
