@@ -8,8 +8,7 @@ import Link from "next/link";
 import Pagination from "@/app/components/Pagination";
 import CategoryBadge from "@/app/articles/CategoryBadge";
 import CategoryFilter from "@/app/articles/CategoryFilter";
-import useCategories from "@/app/models/UseCategories";
-
+import UseActiveCategories from "@/app/models/UseActiveCategories";
 
 export interface ArticleQuery {
     categoryId: number;
@@ -27,7 +26,7 @@ const Articles = async ({searchParams}: Props) => {
 
     const data = await usePages(pagePrefix);
     const allArticles = await useArticles();
-    const categories = await useCategories();
+    const categories = await UseActiveCategories();
 
     const pageSize = 5;
     const currentPage = searchParams.page ? parseInt(searchParams.page.toString()) : 1;
