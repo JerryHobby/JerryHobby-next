@@ -6,6 +6,9 @@ const UseCategories = async () => {
         {
             include: {
                 articles: true
+            },
+            orderBy: {
+                name: 'asc'
             }
         }
     );
