@@ -29,8 +29,7 @@ export default async function Home() {
             {(data) && data['Home 2']
                 && <ShowMarkdown item={data['Home 2']}/>}
             <YoutubeEmbed embedId='wOZe14BmnTo'  />
-            // Wqf1fXR8WW4   pFHKEWKaXoQ
-
         </main>
     )
 }
+// Wqf1fXR8WW4   pFHKEWKaXoQ
