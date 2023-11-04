@@ -53,7 +53,7 @@ const Articles = async ({searchParams}: Props) => {
                 && <ShowMarkdown item={data['Articles 1']}/>}
 
             <CategoryFilter categories={categories}/>
-            <Table.Root className='w-full border rounded mt-10'>
+            <Table.Root className='w-full border rounded mt-3'>
                 <TableBody className='w-full'>
                     <TableRow>
 
