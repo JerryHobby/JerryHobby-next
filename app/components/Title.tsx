@@ -10,7 +10,8 @@ import {
     BiHive,
     BiHome,
     BiSitemap,
-    BiSlider
+    BiSlider,
+    BiSolidPlaneTakeOff
 } from "react-icons/bi";
 
 const pageIcons = new Map<string, any>();
@@ -26,6 +27,8 @@ pageIcons.set("projects", <BiHive className={iconClass}/>);
 pageIcons.set("buildProcess", <BiSitemap className={iconClass}/>);
 pageIcons.set("resume", <BiFile className={iconClass}/>);
 pageIcons.set("contact", <BiConversation className={iconClass}/>);
+pageIcons.set("airports", <BiSolidPlaneTakeOff className={iconClass}/>);
+
 
 
 interface Props {

@@ -15,7 +15,7 @@ interface Props  {
 
 const ArticlePage = async ({params: {id}}: Props) => {
 
-    const data = await useArticle({id});
+    const data = await useArticle({id: parseInt(id)});
 
     if(!data) return (<></>);
 

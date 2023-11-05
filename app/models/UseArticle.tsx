@@ -7,13 +7,13 @@
 import prisma from "@/prisma/client";
 
 interface Props {
-    id: string
+    id: number
 }
 
 const UseArticle = async ({id}:Props) => {
         return prisma.article.findUnique({
             where: {
-                id: parseInt( id)
+                id: id
             },
             include: {
                 category: true
