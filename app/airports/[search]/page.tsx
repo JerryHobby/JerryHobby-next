@@ -56,7 +56,7 @@ const Page = async ({params: {search}}: Props) => {
                         <Table.Cell className='font-bold'>IATA Code</Table.Cell>
                         <Table.Cell className='font-bold'>Name</Table.Cell>
                         <Table.Cell className='font-bold'>Municipality</Table.Cell>
-                        <Table.Cell className='font-bold'>Country</Table.Cell>
+                        <Table.Cell className='font-bold'>Region</Table.Cell>
                         <Table.Cell className='font-bold'>Website</Table.Cell>
                     </Table.Row>
                 </Table.Header>
@@ -66,7 +66,7 @@ const Page = async ({params: {search}}: Props) => {
                             <Table.Cell>{airport.iata_code}</Table.Cell>
                             <Table.Cell>{airport.name}</Table.Cell>
                             <Table.Cell>{airport.municipality}</Table.Cell>
-                            <Table.Cell>{airport.iso_country}</Table.Cell>
+                            <Table.Cell>{airport.iso_region}</Table.Cell>
                             <Table.Cell>
                                 {airport.wikipedia_link
                                     && <a className='underline' href={airport.wikipedia_link} target='_blank' rel='noreferrer'>Website</a>}
