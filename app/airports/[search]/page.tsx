@@ -1,10 +1,8 @@
 import React from 'react';
-import {Airports} from ".prisma/client";
 import prisma from "@/prisma/client";
 import {Table} from "@radix-ui/themes";
 import {Title} from "@/app/components";
 import SearchForm from "@/app/airports/searchForm";
-
 interface Props {
     params: {
         search: string
@@ -17,6 +15,19 @@ const Page = async ({params: {search}}: Props) => {
 
     const find = decodeURIComponent(search);
     const airports = await prisma.airports.findMany({
+        include: {
+            region: {
+                select: {
+                    name: true
+                }
+            },
+            country: {
+                select: {
+                    name: true
+                }
+            },
+        },
+
         where: {
             type: {
                 not: 'small_airport' || 'closed' || 'heliport' || 'seaplane_base' || 'balloonport'
@@ -33,9 +44,11 @@ const Page = async ({params: {search}}: Props) => {
                 ]
             }
         },
+
         orderBy: {
-            name: 'asc'
+            iata_code: 'desc'
         },
+
         take: 100
     });
 
@@ -61,12 +74,14 @@ const Page = async ({params: {search}}: Props) => {
                     </Table.Row>
                 </Table.Header>
                 <Table.Body>
-                    {airports.map((airport: Airports) => (
+                    {airports.map((airport) => (
                         <Table.Row key={airport.id}>
                             <Table.Cell>{airport.iata_code}</Table.Cell>
                             <Table.Cell>{airport.name}</Table.Cell>
-                            <Table.Cell>{airport.municipality}</Table.Cell>
-                            <Table.Cell>{airport.iso_region}</Table.Cell>
+                            <Table.Cell>
+                                {airport.municipality + ", " + airport.region!.name}
+                            </Table.Cell>
+                            <Table.Cell>{airport.country.name}</Table.Cell>
                             <Table.Cell>
                                 {airport.wikipedia_link
                                     && <a className='underline' href={airport.wikipedia_link} target='_blank' rel='noreferrer'>Website</a>}

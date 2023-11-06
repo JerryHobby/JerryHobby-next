@@ -128,22 +128,46 @@ model Project {
 }
 
 model Airports {
-  id                Int     @id @default(autoincrement())
-  ident             String? @db.Text
-  type              String? @db.Text
-  name              String? @db.Text
+  id                Int       @id @default(autoincrement())
+  ident             String?
+  type              String?
+  name              String?
   latitude_deg      Float?
   longitude_deg     Float?
   elevation_ft      Int?
-  continent         String? @db.Text
-  iso_country       String? @db.Text
-  iso_region        String? @db.Text
-  municipality      String? @db.Text
-  scheduled_service String? @db.Text
-  gps_code          String? @db.Text
-  iata_code         String? @db.Text
-  local_code        String? @db.Text
-  home_link         String? @db.Text
-  wikipedia_link    String? @db.Text
-  keywords          String? @db.Text
+  continent         String?
+  iso_country       String
+  iso_region        String?
+  municipality      String?
+  scheduled_service String?
+  gps_code          String?
+  iata_code         String?
+  local_code        String?
+  home_link         String?
+  wikipedia_link    String?
+  keywords          String?
+  country           Countries @relation(fields: [iso_country], references: [code])
+  region            Regions?  @relation(fields: [iso_region], references: [code])
+}
+
+model Countries {
+  id             Int        @id @default(autoincrement())
+  code           String     @unique
+  name           String?
+  continent      String?
+  wikipedia_link String?
+  keywords       String?
+  Airports       Airports[]
+}
+
+model Regions {
+  id             Int        @id @default(autoincrement())
+  code           String     @unique
+  local_code     String?
+  name           String
+  continent      String
+  iso_country    String
+  wikipedia_link String?
+  keywords       String?
+  Airports       Airports[]
 }
