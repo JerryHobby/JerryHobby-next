@@ -15,6 +15,7 @@ const Page = async ({params: {search}}: Props) => {
     const title = "Airports"
     const icon = "airports"
 
+    const find = decodeURIComponent(search);
     const airports = await prisma.airports.findMany({
         where: {
             type: {
@@ -22,12 +23,13 @@ const Page = async ({params: {search}}: Props) => {
             },
             AND: {
                 OR: [
-                    {name: {contains: search}},
-                    {municipality: {contains: search}},
-                    {iata_code: {contains: search}},
-                    {local_code: {contains: search}},
-                    {ident: {contains: search}},
-                    {keywords: {contains: search}},
+                    {name: {contains: find}},
+                    {municipality: {contains: find}},
+                    {iata_code: {contains: find}},
+                    {local_code: {contains: find}},
+                    {iso_country: {contains: find}},
+                    {ident: {contains: find}},
+                    {keywords: {contains: find}},
                 ]
             }
         },
@@ -51,27 +53,25 @@ const Page = async ({params: {search}}: Props) => {
             <Table.Root className='w-full border rounded mt-3 mb-10'>
                 <Table.Header className='bg-gray-100'>
                     <Table.Row>
+                        <Table.Cell className='font-bold'>IATA Code</Table.Cell>
                         <Table.Cell className='font-bold'>Name</Table.Cell>
                         <Table.Cell className='font-bold'>Municipality</Table.Cell>
-                        <Table.Cell className='font-bold'>IATA Code</Table.Cell>
                         <Table.Cell className='font-bold'>Country</Table.Cell>
                         <Table.Cell className='font-bold'>Website</Table.Cell>
-                        <Table.Cell className='font-bold'>Keywords</Table.Cell>
                     </Table.Row>
                 </Table.Header>
                 <Table.Body>
                     {airports.map((airport: Airports) => (
                         <Table.Row key={airport.id}>
+                            <Table.Cell>{airport.iata_code}</Table.Cell>
                             <Table.Cell>{airport.name}</Table.Cell>
                             <Table.Cell>{airport.municipality}</Table.Cell>
-                            <Table.Cell>{airport.iata_code}</Table.Cell>
                             <Table.Cell>{airport.iso_country}</Table.Cell>
                             <Table.Cell>
                                 {airport.wikipedia_link
                                     && <a className='underline' href={airport.wikipedia_link} target='_blank' rel='noreferrer'>Website</a>}
 
                             </Table.Cell>
-                            <Table.Cell>{airport.keywords}</Table.Cell>
                         </Table.Row>
                     ))}
                 </Table.Body>
