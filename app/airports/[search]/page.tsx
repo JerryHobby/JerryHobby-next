@@ -34,6 +34,7 @@ const Page = async ({params: {search}}: Props) => {
             },
             AND: {
                 OR: [
+                    // {body: {contains: find}},
                     {name: {contains: find}},
                     {municipality: {contains: find}},
                     {iata_code: {contains: find}},
