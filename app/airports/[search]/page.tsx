@@ -62,7 +62,7 @@ const Page = async ({params: {search}}: Props) => {
         },
 
         orderBy: {
-            iata_code: 'desc'
+            iata_code: 'asc'
         },
 
         take: 100
@@ -96,9 +96,9 @@ const Page = async ({params: {search}}: Props) => {
         });
 
         if (score && airport.type === 'large_airport') {
-            score += 100;
+            score += 400;
         } else if (score && airport.type === 'medium_airport') {
-            score += 50;
+            score += 200;
         }
         return score;
     }
