@@ -4,7 +4,7 @@ mkdir -p $TARGETDIR
 
 URL=https://raw.githubusercontent.com/davidmegginson/ourairports-data/main/
 FILES=(airports.csv runways.csv navaids.csv airport-frequencies.csv countries.csv regions.csv)
-FILES=(runways.csv navaids.csv airport-frequencies.csv)
+FILES=(Runways.csv Navaids.csv)
 
 
 for (( i = 1; i <= $#FILES; i++ )) do
@@ -15,7 +15,7 @@ for (( i = 1; i <= $#FILES; i++ )) do
         echo "#############################################"
         curl $URL"${FILES[i]}" > "$RAW"
         sed 's/,,/,\\N,/g' "$RAW" | sed 's/,,/,\\N,/g' > "$CSV"
-        mysqlimport --user=jerryhobby --host='jerryhobby.com' --password='wjb7ETJ*dzr2jeu2wuf' jerryhobby "$RAW"--delete --force --verbose --ignore-lines=1 --fields-terminated-by=',' --fields-enclosed-by='"' --lines-terminated-by='\n' "$CSV"
+        mysqlimport --user=jerryhobby --host='jerryhobby.com' --password='wjb7ETJ*dzr2jeu2wuf' jerryhobby "$CSV" --delete --force --verbose --ignore-lines=1 --fields-terminated-by=',' --fields-enclosed-by='"' --lines-terminated-by='\n'
     )
 done
 
