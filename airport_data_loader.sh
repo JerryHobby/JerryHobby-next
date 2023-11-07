@@ -15,7 +15,7 @@ for (( i = 1; i <= $#INFILES; i++ )) do
 
         echo "#############################################"
         curl $URL"${INFILES[i]}" > "$RAW"
-        sed 's/,,/,\\N,/g' "$RAW" | sed 's/,,/,\\N,/g' > "$CSV"
+        sed 's/,,/,\\N,/g' "$RAW" | sed 's/,,/,\\N,/g' |sed 's/,$/,\\N/g' > "$CSV"
         mysqlimport --user=jerryhobby --host='jerryhobby.com' --password='wjb7ETJ*dzr2jeu2wuf' jerryhobby "$CSV" --delete --force --verbose --ignore-lines=1 --fields-terminated-by=',' --fields-enclosed-by='"' --lines-terminated-by='\n'
     )
 done
