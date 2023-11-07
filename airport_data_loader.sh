@@ -19,4 +19,4 @@ ls -l /tmp/airport_data
 #mysqlimport --user=jerryhobby --password='wjb7ETJ*dzr2jeu2wuf' jerryhobby $TARGETDIR/Regions.csv --fields-terminated-by=',' --lines-terminated-by='\n' --columns='id,code,name,local_code,wikipedia_link,keywords'
 
 
-mysqlimport --user=jerryhobby --host='jerryhobby.com' --password='wjb7ETJ*dzr2jeu2wuf' jerryhobby $TARGETDIR/Navaids.csv --fields-terminated-by=',' --lines-terminated-by='\n' --columns='id,filename,ident,name,type,frequency_khz,latitude_deg,longitude_deg,elevation_ft,iso_country,dme_frequency_khz,dme_channel,dme_latitude_deg,dme_longitude_deg,dme_elevation_ft,slaved_variation,magnetic_variation_deg,usageType,power,associated_airport'
+mysqlimport --user=jerryhobby --host='jerryhobby.com' --password='wjb7ETJ*dzr2jeu2wuf' jerryhobby $TARGETDIR/Navaids.csv --fields-terminated-by=',' --lines-terminated-by='\n' --columns='id,filename,ident,name,type,frequency_khz,latitude_deg,longitude_deg,elevation_ft,iso_country,dme_frequency_khz,dme_channel,dme_latitude_deg,dme_longitude_deg,dme_elevation_ft,slaved_variation_deg,magnetic_variation_deg,usageType,power,associated_airport'
