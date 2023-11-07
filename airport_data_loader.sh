@@ -1,20 +1,27 @@
 #!/bin/zsh
-TARGETDIR=/tmp/airport_data/
-
+TARGETDIR=/tmp/airport_data
 mkdir -p $TARGETDIR
 
-#curl "https://raw.githubusercontent.com/davidmegginson/ourairports-data/main/airports.csv" > $TARGETDIR/Airports.csv
-#curl "https://raw.githubusercontent.com/davidmegginson/ourairports-data/main/runways.csv" > $TARGETDIR/Runways.csv
+URL=https://raw.githubusercontent.com/davidmegginson/ourairports-data/main/
+FILES=(airports.csv runways.csv navaids.csv airport-frequencies.csv countries.csv regions.csv)
+FILES=(runways.csv navaids.csv airport-frequencies.csv)
 
-curl "https://raw.githubusercontent.com/davidmegginson/ourairports-data/main/navaids.csv" > $TARGETDIR/Navaids_raw.csv
-sed 's/,,/,\\N,/g' $TARGETDIR/Navaids_raw.csv | sed 's/,,/,\\N,/g' > $TARGETDIR/Navaids.csv
-mysqlimport --user=jerryhobby --host='jerryhobby.com' --password='wjb7ETJ*dzr2jeu2wuf' jerryhobby $TARGETDIR/Navaids.csv --delete --force --verbose --ignore-lines=1 --fields-terminated-by=',' --fields-enclosed-by='"' --lines-terminated-by='\n'
-#--columns='id,filename,ident,name,type,frequency_khz,latitude_deg,longitude_deg,elevation_ft,iso_country,dme_frequency_khz,dme_channel,dme_latitude_deg,dme_longitude_deg,dme_elevation_ft,slaved_variation_deg,magnetic_variation_deg,usageType,power,associated_airport'
 
-#curl "https://raw.githubusercontent.com/davidmegginson/ourairports-data/main/airport-frequencies.csv" > $TARGETDIR/Frequencies.csv
-#curl "https://raw.githubusercontent.com/davidmegginson/ourairports-data/main/countries.csv" > $TARGETDIR/Countries.csv
-#curl "https://raw.githubusercontent.com/davidmegginson/ourairports-data/main/regions.csv" > $TARGETDIR/Regions.csv
+for (( i = 1; i <= $#FILES; i++ )) do
+    ( # subshell to contain the effect of the chdir
+        RAW=$TARGETDIR/in-"${FILES[i]}"
+        CSV=$TARGETDIR/"${FILES[i]}"
 
+        echo "#############################################"
+        curl $URL"${FILES[i]}" > $RAW
+        sed 's/,,/,\\N,/g' "$RAW" | sed 's/,,/,\\N,/g' "---" "$CSV"
+        mysqlimport --user=jerryhobby --host='jerryhobby.com' --password='wjb7ETJ*dzr2jeu2wuf' jerryhobby "$RAW"--delete --force --verbose --ignore-lines=1 --fields-terminated-by=',' --fields-enclosed-by='"' --lines-terminated-by='\n' "$CSV"
+    )
+done
+
+
+#curl "https://raw.githubusercontent.com/davidmegginson/ourairports-data/main/navaids.csv" > $TARGETDIR/Navaids_raw.csv
+#sed 's/,,/,\\N,/g' $TARGETDIR/Navaids_raw.csv | sed 's/,,/,\\N,/g' > $TARGETDIR/Navaids.csv
 
 
 #mysqlimport --user=jerryhobby --password='wjb7ETJ*dzr2jeu2wuf' jerryhobby $TARGETDIR/Airports.csv --fields-terminated-by=',' --lines-terminated-by='\n' --columns='id,ident,type,name,latitude_deg,longitude_deg,elevation_ft,continent,iso_country,iso_region,municipality,scheduled_service,gps_code,iata_code,local_code,home_link,wikipedia_link,keywords'
