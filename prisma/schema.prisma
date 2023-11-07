@@ -146,7 +146,7 @@ model Airports {
   local_code        String?
   home_link         String?
   wikipedia_link    String?
-  keywords          String?
+  keywords          String?   @db.VarChar(1000)
   country           Countries @relation(fields: [iso_country], references: [code])
   region            Regions?  @relation(fields: [iso_region], references: [code])
 
