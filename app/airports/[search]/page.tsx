@@ -3,38 +3,52 @@ import prisma from "@/prisma/client";
 import {Table} from "@radix-ui/themes";
 import {Title} from "@/app/components";
 import SearchForm from "@/app/airports/searchForm";
+import {forEach} from "lodash";
+
 interface Props {
     params: {
         search: string
     }
 }
 
+interface AirportColors {
+    [index: string]: string;
+}
+var airportColor = {} as AirportColors;
+
+airportColor['large_airport'] = 'text-blue-500 text-lg';
+airportColor['medium_airport'] = 'text-green-500 text-md';
+airportColor['small_airport'] = 'text-yellow-500 text-sm';
+airportColor['closed'] = 'text-red-500 text-sm';
+airportColor['heliport'] = 'text-purple-500 text-sm';
+airportColor['seaplane_base'] = 'text-pink-500 text-sm';
+airportColor['balloonport'] = 'text-indigo-500 text-sm';
+
+console.log(airportColor['seaplane_base']);
+
+
 const Page = async ({params: {search}}: Props) => {
     const title = "Airports"
     const icon = "airports"
 
+
+    // const result1 = await this.prisma.course.findMany({
+    //   where: { enrollmentCourse: { some: { userId: user.id } } },
+    //   include: { enrollmentCourse: true }
+    // });
+
     const find = decodeURIComponent(search);
     const airports = await prisma.airports.findMany({
         include: {
-            region: {
-                select: {
-                    name: true
-                }
-            },
-            country: {
-                select: {
-                    name: true
-                }
-            },
+            region: { select: { name: true } },
+            country: { select: { name: true } },
         },
-
         where: {
             type: {
                 not: 'small_airport' || 'closed' || 'heliport' || 'seaplane_base' || 'balloonport'
             },
             AND: {
                 OR: [
-                    // {body: {contains: find}},
                     {name: {contains: find}},
                     {municipality: {contains: find}},
                     {iata_code: {contains: find}},
@@ -42,6 +56,8 @@ const Page = async ({params: {search}}: Props) => {
                     {iso_country: {contains: find}},
                     {ident: {contains: find}},
                     {keywords: {contains: find}},
+                    {region: {name: {contains: find}}},
+                    {country: {name: {contains: find}}},
                 ]
             }
         },
@@ -53,6 +69,46 @@ const Page = async ({params: {search}}: Props) => {
         take: 100
     });
 
+
+    function score(airport: any) {
+        // weighted score --
+        let score = 0;
+
+        forEach(airport, (field: any) => {
+                if (field && typeof field === 'object') {
+                    forEach(field, (subfield: any) => {
+                        if (subfield && typeof subfield === 'string') {
+                            if (subfield.toUpperCase() === find.toUpperCase()) {
+                                score += 100;
+                            } else if (subfield.toUpperCase().includes(find.toUpperCase())) {
+                                score += 10;
+                            }
+                        }
+                    });
+                }
+
+                if (field && typeof field === 'string') {
+                    if (field.toUpperCase() === find.toUpperCase()) {
+                        score += 100;
+                    } else if (field.toUpperCase().includes(find.toUpperCase())) {
+                        score += 10;
+                    }
+                }
+            });
+
+            if(score && airport.type === 'large_airport') {
+                score += 100;
+            } else if(score && airport.type === 'medium_airport') {
+                score += 50;
+            }
+        return score;
+    }
+
+    airports.sort((a, b) => {
+        return score(b) - score(a);
+    });
+
+    // @ts-ignore
     return (
         <>
             <Title title={title} icon={icon}/>
@@ -60,7 +116,7 @@ const Page = async ({params: {search}}: Props) => {
             <div className='flex justify-between'>
                 <h1 className='text-2xl font-bold'>{title}</h1>
                 <div className='flex items-center'>
-                    <SearchForm/>
+                    <SearchForm search={search}/>
                 </div>
             </div>
 
@@ -72,22 +128,26 @@ const Page = async ({params: {search}}: Props) => {
                         <Table.Cell className='font-bold'>Municipality</Table.Cell>
                         <Table.Cell className='font-bold'>Region</Table.Cell>
                         <Table.Cell className='font-bold'>Website</Table.Cell>
+                        <Table.Cell className='font-bold'>Score</Table.Cell>
                     </Table.Row>
                 </Table.Header>
                 <Table.Body>
                     {airports.map((airport) => (
                         <Table.Row key={airport.id}>
-                            <Table.Cell>{airport.iata_code}</Table.Cell>
-                            <Table.Cell>{airport.name}</Table.Cell>
+                            <Table.Cell><div
+                                className={`font-bold ${airportColor[airport.type!]} `}>
+                                {airport.iata_code}</div></Table.Cell>
+                            <Table.Cell><div className='font-bold '>{airport.name}</div>{airport.keywords}</Table.Cell>
                             <Table.Cell>
                                 {airport.municipality + ", " + airport.region!.name}
                             </Table.Cell>
                             <Table.Cell>{airport.country.name}</Table.Cell>
                             <Table.Cell>
                                 {airport.wikipedia_link
-                                    && <a className='underline' href={airport.wikipedia_link} target='_blank' rel='noreferrer'>Website</a>}
-
+                                    && <a className='underline' href={airport.wikipedia_link} target='_blank'
+                                          rel='noreferrer'>Website</a>}
                             </Table.Cell>
+                            <Table.Cell>{score(airport)}</Table.Cell>
                         </Table.Row>
                     ))}
                 </Table.Body>
