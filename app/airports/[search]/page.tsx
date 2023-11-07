@@ -24,9 +24,6 @@ airportColor['heliport'] = 'text-purple-500 text-sm';
 airportColor['seaplane_base'] = 'text-pink-500 text-sm';
 airportColor['balloonport'] = 'text-indigo-500 text-sm';
 
-console.log(airportColor['seaplane_base']);
-
-
 const Page = async ({params: {search}}: Props) => {
     const title = "Airports"
     const icon = "airports"
