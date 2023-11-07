@@ -8,7 +8,7 @@ mkdir -p $TARGETDIR
 
 curl "https://raw.githubusercontent.com/davidmegginson/ourairports-data/main/navaids.csv" > $TARGETDIR/Navaids_raw.csv
 sed 's/,,/,\\N,/g' $TARGETDIR/Navaids_raw.csv | sed 's/,,/,\\N,/g' > $TARGETDIR/Navaids.csv
-mysqlimport --user=jerryhobby --host='jerryhobby.com' --password='wjb7ETJ*dzr2jeu2wuf' jerryhobby $TARGETDIR/Navaids.csv --delete --force --verbose --ignore-lines=1 --fields-terminated-by=',' --lines-terminated-by='\n' --columns='id,filename,ident,name,type,frequency_khz,latitude_deg,longitude_deg,elevation_ft,iso_country,dme_frequency_khz,dme_channel,dme_latitude_deg,dme_longitude_deg,dme_elevation_ft,slaved_variation_deg,magnetic_variation_deg,usageType,power,associated_airport'
+mysqlimport --user=jerryhobby --host='jerryhobby.com' --password='wjb7ETJ*dzr2jeu2wuf' jerryhobby $TARGETDIR/Navaids.csv --delete --force --verbose --ignore-lines=1 --fields-terminated-by=',' --fields-enclosed-by='"' --lines-terminated-by='\n' --columns='id,filename,ident,name,type,frequency_khz,latitude_deg,longitude_deg,elevation_ft,iso_country,dme_frequency_khz,dme_channel,dme_latitude_deg,dme_longitude_deg,dme_elevation_ft,slaved_variation_deg,magnetic_variation_deg,usageType,power,associated_airport'
 
 #curl "https://raw.githubusercontent.com/davidmegginson/ourairports-data/main/airport-frequencies.csv" > $TARGETDIR/Frequencies.csv
 #curl "https://raw.githubusercontent.com/davidmegginson/ourairports-data/main/countries.csv" > $TARGETDIR/Countries.csv
