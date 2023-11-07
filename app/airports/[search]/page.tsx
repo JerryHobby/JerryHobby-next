@@ -123,30 +123,29 @@ const Page = async ({params: {search}}: Props) => {
             <Table.Root className='w-full border rounded mt-3 mb-10'>
                 <Table.Header className='bg-gray-100'>
                     <Table.Row>
-                        <Table.Cell className='font-bold'>IATA Code</Table.Cell>
+                        <Table.Cell className='font-bold'>IATA</Table.Cell>
                         <Table.Cell className='font-bold'>Name</Table.Cell>
-                        <Table.Cell className='font-bold'>Municipality</Table.Cell>
-                        <Table.Cell className='font-bold'>Region</Table.Cell>
-                        <Table.Cell className='font-bold'>Website</Table.Cell>
+                        <Table.Cell className='font-bold'>Location</Table.Cell>
                     </Table.Row>
                 </Table.Header>
                 <Table.Body>
                     {airports.map((airport) => (
                         <Table.Row key={airport.id}>
-                            <Table.Cell><div
-                                className={`font-bold ${airportColor[airport.type!]} `}>
-                                {airport.iata_code}</div></Table.Cell>
+                            <Table.Cell>
+                                {airport.wikipedia_link
+                                    && <a className='underline' href={airport.wikipedia_link} target='_blank'
+                                          rel='noreferrer'><div className={`font-bold ${airportColor[airport.type!]} `}>
+                                        {airport.iata_code}</div></a>
+                                    || <div className={`font-bold ${airportColor[airport.type!]} `}>
+                                        {airport.iata_code}</div>
+                                }
+                            </Table.Cell>
                             <Table.Cell>
                                 <div className='font-bold '>{airport.name}</div>
                                 <div className='textarea-xs p-0 m-0 '>{airport.keywords}</div></Table.Cell>
                             <Table.Cell>
-                                {airport.municipality + ", " + airport.region!.name}
-                            </Table.Cell>
-                            <Table.Cell>{airport.country.name}</Table.Cell>
-                            <Table.Cell>
-                                {airport.wikipedia_link
-                                    && <a className='underline' href={airport.wikipedia_link} target='_blank'
-                                          rel='noreferrer'>Website</a>}
+                                <div className='whitespace-nowrap'>{airport.municipality + ", " + airport.region!.name}</div>
+                                <div className='textarea-xs p-0 m-0 '>{airport.country.name}</div>
                             </Table.Cell>
                         </Table.Row>
                     ))}
