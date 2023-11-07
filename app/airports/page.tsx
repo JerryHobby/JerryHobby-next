@@ -1,21 +1,30 @@
 import React from 'react';
 import {Title} from "@/app/components";
 import SearchForm from "@/app/airports/searchForm";
+import usePages from "@/app/models/UsePages";
+import ShowMarkdown from "@/app/components/ShowMarkdown";
 
-const Page = () => {
-    const title = "Airports"
-    const icon = "airports"
+const Page = async () => {
+    const title = "Airports Search Tool"
+    const icon = "airplane"
+    const pagePrefix = "airports";
+    const data = await usePages(pagePrefix);
+
     return (
         <>
-        <Title title={title} icon={icon}/>
+            <Title title={title} icon={icon}/>
 
-    <div className='flex justify-between'>
-        <h1 className='text-2xl font-bold'>{title}</h1>
-        <div className='flex items-center'>
-            <SearchForm/>
-        </div>
-    </div>
-</>
+            <div className='flex justify-between'>
+
+                <div>
+                    {(data) && data['Airports 1']
+                        && <ShowMarkdown item={data['Airports 1']}/>}
+                </div>
+                <div className='flex  whitespace-nowrap pl-5'>
+                    <SearchForm/>
+                </div>
+            </div>
+        </>
     );
 };
 

@@ -128,7 +128,6 @@ const Page = async ({params: {search}}: Props) => {
                         <Table.Cell className='font-bold'>Municipality</Table.Cell>
                         <Table.Cell className='font-bold'>Region</Table.Cell>
                         <Table.Cell className='font-bold'>Website</Table.Cell>
-                        <Table.Cell className='font-bold'>Score</Table.Cell>
                     </Table.Row>
                 </Table.Header>
                 <Table.Body>
@@ -137,7 +136,9 @@ const Page = async ({params: {search}}: Props) => {
                             <Table.Cell><div
                                 className={`font-bold ${airportColor[airport.type!]} `}>
                                 {airport.iata_code}</div></Table.Cell>
-                            <Table.Cell><div className='font-bold '>{airport.name}</div>{airport.keywords}</Table.Cell>
+                            <Table.Cell>
+                                <div className='font-bold '>{airport.name}</div>
+                                <div className='textarea-xs p-0 m-0 '>{airport.keywords}</div></Table.Cell>
                             <Table.Cell>
                                 {airport.municipality + ", " + airport.region!.name}
                             </Table.Cell>
@@ -147,7 +148,6 @@ const Page = async ({params: {search}}: Props) => {
                                     && <a className='underline' href={airport.wikipedia_link} target='_blank'
                                           rel='noreferrer'>Website</a>}
                             </Table.Cell>
-                            <Table.Cell>{score(airport)}</Table.Cell>
                         </Table.Row>
                     ))}
                 </Table.Body>
