@@ -4,8 +4,8 @@ mkdir -p $TARGETDIR
 
 URL=https://raw.githubusercontent.com/davidmegginson/ourairports-data/main/
 
-INFILES=(airports.csv countries.csv runways.csv navaids.csv regions.csv airport-frequencies.csv)
-OUTFILES=(Airports.csv Countries.csv Runways.csv Navaids.csv Regions.csv Frequencies.csv)
+INFILES=(countries.csv runways.csv navaids.csv regions.csv airport-frequencies.csv airports.csv)
+OUTFILES=(Countries.csv Runways.csv Navaids.csv Regions.csv Frequencies.csv Airports.csv)
 
 
 for (( i = 1; i <= $#INFILES; i++ )) do
