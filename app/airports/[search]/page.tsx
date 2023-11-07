@@ -120,7 +120,7 @@ const Page = async ({params: {search}}: Props) => {
                 </div>
             </div>
 
-            <Table.Root className='w-full border rounded mt-3 mb-10'>
+            <Table.Root className=' border rounded mt-3 mb-10 max-w-full'>
                 <Table.Header className='bg-gray-100'>
                     <Table.Row>
                         <Table.Cell className='font-bold'>IATA</Table.Cell>
@@ -144,7 +144,7 @@ const Page = async ({params: {search}}: Props) => {
                                 <div className='font-bold '>{airport.name}</div>
                                 <div className='textarea-xs p-0 m-0 '>{airport.keywords}</div></Table.Cell>
                             <Table.Cell>
-                                <div className='whitespace-nowrap'>{airport.municipality + ", " + airport.region!.name}</div>
+                                <div className='xwhitespace-nowrap'>{airport.municipality + ", " + airport.region!.name}</div>
                                 <div className='textarea-xs p-0 m-0 '>{airport.country.name}</div>
                             </Table.Cell>
                         </Table.Row>
