@@ -4,13 +4,14 @@ mkdir -p $TARGETDIR
 
 URL=https://raw.githubusercontent.com/davidmegginson/ourairports-data/main/
 FILES=(airports.csv runways.csv navaids.csv airport-frequencies.csv countries.csv regions.csv)
-FILES=(Runways.csv Navaids.csv)
+INFILES=(runways.csv navaids.csv)
+OUTFILES=(Runways.csv Navaids.csv)
 
 
 for (( i = 1; i <= $#FILES; i++ )) do
     ( # subshell to contain the effect of the chdir
-        RAW=$TARGETDIR/in-"${FILES[i]}"
-        CSV=$TARGETDIR/"${FILES[i]}"
+        RAW=$TARGETDIR/in-"${INFILES[i]}"
+        CSV=$TARGETDIR/"${OUTFILES[i]}"
 
         echo "#############################################"
         curl $URL"${FILES[i]}" > "$RAW"
