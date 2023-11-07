@@ -14,6 +14,7 @@ interface Props {
 interface AirportColors {
     [index: string]: string;
 }
+
 var airportColor = {} as AirportColors;
 
 airportColor['large_airport'] = 'text-blue-500 text-lg';
@@ -37,13 +38,14 @@ const Page = async ({params: {search}}: Props) => {
     const find = decodeURIComponent(search);
     const airports = await prisma.airports.findMany({
         include: {
-            region: { select: { name: true } },
-            country: { select: { name: true } },
+            region: {select: {name: true}},
+            country: {select: {name: true}},
         },
         where: {
             type: {
                 not: 'small_airport' || 'closed' || 'heliport' || 'seaplane_base' || 'balloonport'
             },
+            iata_code: {not: null},
             AND: {
                 OR: [
                     {name: {contains: find}},
@@ -72,32 +74,32 @@ const Page = async ({params: {search}}: Props) => {
         let score = 0;
 
         forEach(airport, (field: any) => {
-                if (field && typeof field === 'object') {
-                    forEach(field, (subfield: any) => {
-                        if (subfield && typeof subfield === 'string') {
-                            if (subfield.toUpperCase() === find.toUpperCase()) {
-                                score += 100;
-                            } else if (subfield.toUpperCase().includes(find.toUpperCase())) {
-                                score += 10;
-                            }
+            if (field && typeof field === 'object') {
+                forEach(field, (subfield: any) => {
+                    if (subfield && typeof subfield === 'string') {
+                        if (subfield.toUpperCase() === find.toUpperCase()) {
+                            score += 100;
+                        } else if (subfield.toUpperCase().includes(find.toUpperCase())) {
+                            score += 10;
                         }
-                    });
-                }
-
-                if (field && typeof field === 'string') {
-                    if (field.toUpperCase() === find.toUpperCase()) {
-                        score += 100;
-                    } else if (field.toUpperCase().includes(find.toUpperCase())) {
-                        score += 10;
                     }
-                }
-            });
-
-            if(score && airport.type === 'large_airport') {
-                score += 100;
-            } else if(score && airport.type === 'medium_airport') {
-                score += 50;
+                });
             }
+
+            if (field && typeof field === 'string') {
+                if (field.toUpperCase() === find.toUpperCase()) {
+                    score += 100;
+                } else if (field.toUpperCase().includes(find.toUpperCase())) {
+                    score += 10;
+                }
+            }
+        });
+
+        if (score && airport.type === 'large_airport') {
+            score += 100;
+        } else if (score && airport.type === 'medium_airport') {
+            score += 50;
+        }
         return score;
     }
 
@@ -131,17 +133,20 @@ const Page = async ({params: {search}}: Props) => {
                             <Table.Cell>
                                 {airport.wikipedia_link
                                     && <a className='underline' href={airport.wikipedia_link} target='_blank'
-                                          rel='noreferrer'><div className={`font-bold ${airportColor[airport.type!]} `}>
-                                        {airport.iata_code}</div></a>
+                                          rel='noreferrer'>
+                                        <div className={`font-bold ${airportColor[airport.type!]} `}>
+                                            {airport.iata_code}</div>
+                                    </a>
                                     || <div className={`font-bold ${airportColor[airport.type!]} `}>
                                         {airport.iata_code}</div>
                                 }
                             </Table.Cell>
                             <Table.Cell>
                                 <div className='font-bold '>{airport.name}</div>
-                                <div className='textarea-xs p-0 m-0 '>{airport.keywords}</div></Table.Cell>
+                                <div className='textarea-xs p-0 m-0 '>{airport.keywords}</div>
+                            </Table.Cell>
                             <Table.Cell>
-                                <div >{airport.municipality + ", " + airport.region?.name}</div>
+                                <div>{airport.municipality + ", " + airport.region?.name}</div>
                                 <div className='textarea-xs p-0 m-0 '>{airport.country.name}</div>
                             </Table.Cell>
                         </Table.Row>
