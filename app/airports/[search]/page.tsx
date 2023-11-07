@@ -141,7 +141,7 @@ const Page = async ({params: {search}}: Props) => {
                                 <div className='font-bold '>{airport.name}</div>
                                 <div className='textarea-xs p-0 m-0 '>{airport.keywords}</div></Table.Cell>
                             <Table.Cell>
-                                <div className='xwhitespace-nowrap'>{airport.municipality + ", " + airport.region!.name}</div>
+                                <div >{airport.municipality + ", " + airport.region?.name}</div>
                                 <div className='textarea-xs p-0 m-0 '>{airport.country.name}</div>
                             </Table.Cell>
                         </Table.Row>
