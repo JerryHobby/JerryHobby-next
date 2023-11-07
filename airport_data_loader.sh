@@ -13,8 +13,8 @@ for (( i = 1; i <= $#FILES; i++ )) do
         CSV=$TARGETDIR/"${FILES[i]}"
 
         echo "#############################################"
-        curl $URL"${FILES[i]}" > $RAW
-        sed 's/,,/,\\N,/g' "$RAW" | sed 's/,,/,\\N,/g' "---" "$CSV"
+        curl $URL"${FILES[i]}" > "$RAW"
+        sed 's/,,/,\\N,/g' "$RAW" | sed 's/,,/,\\N,/g' > "$CSV"
         mysqlimport --user=jerryhobby --host='jerryhobby.com' --password='wjb7ETJ*dzr2jeu2wuf' jerryhobby "$RAW"--delete --force --verbose --ignore-lines=1 --fields-terminated-by=',' --fields-enclosed-by='"' --lines-terminated-by='\n' "$CSV"
     )
 done
