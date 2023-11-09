@@ -75,7 +75,7 @@ const aboutJerryNav = () => {
 
 const projectsNav = () => {
     return (
-        <div className="dropdown">
+        <div className="dropdown dropdown-hover">
             <label tabIndex={0} className={dropTriggerClassName}>
                 Projects
                 <CaretDownIcon
@@ -94,7 +94,7 @@ const projectsNav = () => {
 
 const userMenu = (status: string, session: Session) => {
     return (
-        <div className="dropdown">
+        <div className="dropdown dropdown-hover">
             <label tabIndex={0} className={dropTriggerClassName}>
                 {!session && "User Menu"}
                 {(session && session.user?.name)}
