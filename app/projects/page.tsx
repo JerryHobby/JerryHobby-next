@@ -60,3 +60,4 @@ const Projects = async () => {
 };
 
 export default Projects;
+export const dynamic="force-dynamic";

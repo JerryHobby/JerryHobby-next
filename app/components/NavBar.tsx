@@ -86,11 +86,8 @@ const projectsNav = () => {
             </NavigationMenu.Trigger>
             <NavigationMenu.Content className="absolute top-0 left-0 w-full sm:w-auto">
                 <ul className={ul1ColClassName}>
-                    <ListItem title="Airport Search Tool" href="/airports">
-                        Search global airports to find codes, locations, etc.
-                    </ListItem>
-                    <ListItem title="Demo Projects" href="/projects">
-                        Several demo projects in various languages.
+                    <ListItem title="Projects" href="/projects">
+                        Showcase several projects, some production, some demo.
                     </ListItem>
                     <ListItem title="Build Process" href="/buildProcess">
                         Tools and processes used to build this site and multi-platform apps.
@@ -103,8 +100,7 @@ const projectsNav = () => {
 
 const userNav = (status: string, session: Session) => {
 
-    const admin = session.user?.email === "jerry@anythinginternet.com" ? true : false;
-
+    const admin = session.user?.email === "jerry@anythinginternet.com";
 
     return (
         (!session || null)

@@ -43,3 +43,4 @@ const Experience = async () => {
 }
 
 export default Experience;
+export const dynamic="force-dynamic";

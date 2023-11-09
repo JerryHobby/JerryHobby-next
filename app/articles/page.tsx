@@ -97,3 +97,4 @@ const Articles = async ({searchParams}: Props) => {
 };
 
 export default Articles;
+export const dynamic="force-dynamic";

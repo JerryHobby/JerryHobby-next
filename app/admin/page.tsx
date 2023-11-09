@@ -10,3 +10,4 @@ const AdminHomePage = () => {
 };
 
 export default AdminHomePage;
+export const dynamic="force-dynamic";

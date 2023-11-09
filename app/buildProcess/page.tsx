@@ -61,3 +61,4 @@ const BuildProcess = async () => {
 };
 
 export default BuildProcess;
+export const dynamic="force-dynamic";

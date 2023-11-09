@@ -49,3 +49,4 @@ const Technical = async () => {
 };
 
 export default Technical;
+export const dynamic="force-dynamic";

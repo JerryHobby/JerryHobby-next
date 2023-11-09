@@ -45,3 +45,4 @@ const Leadership = async () => {
 };
 
 export default Leadership;
+export const dynamic="force-dynamic";

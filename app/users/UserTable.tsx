@@ -63,3 +63,4 @@ async function UserTable({sortOrder}: Props = {sortOrder: 'name'}) {
 }
 
 export default UserTable;
+export const dynamic="force-dynamic";

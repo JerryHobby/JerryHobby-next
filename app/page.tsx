@@ -32,4 +32,4 @@ export default async function Home() {
         </main>
     )
 }
-// Wqf1fXR8WW4   pFHKEWKaXoQ
+export const dynamic="force-dynamic";

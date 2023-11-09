@@ -48,3 +48,4 @@ const Resume = async () => {
 };
 
 export default Resume;
+export const dynamic="force-dynamic";
