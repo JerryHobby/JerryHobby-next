@@ -1,22 +1,20 @@
 'use client'
 import React from 'react';
 import {useSession} from "next-auth/react";
-
 import Image from "next/image";
 import * as NavigationMenu from '@radix-ui/react-navigation-menu';
 import classNames from 'classnames';
 import {CaretDownIcon} from '@radix-ui/react-icons';
 import {Session} from "next-auth";
 
-const iconClass = 'inline align-text-top text-md mr-1';
-const logo = "/jh2.png";
+// const iconClass = 'inline align-text-top text-md mr-1';
+// const logo = "/jh2.png";
 
 
 const dropTriggerClassName = "text-violet11 hover:bg-violet3 focus:shadow-violet7 group flex select-none items-center justify-between gap-[2px] rounded-[4px] px-3 py-2 text-[15px] font-medium leading-none outline-none focus:shadow-[0_0_0_2px]";
 const caretClassName = "text-violet10 relative top-[1px] transition-transform duration-[250] ease-in group-data-[state=open]:-rotate-180";
 const navContentClassName = "data-[motion=from-start]:animate-enterFromLeft data-[motion=from-end]:animate-enterFromRight data-[motion=to-start]:animate-exitToLeft data-[motion=to-end]:animate-exitToRight absolute top-0 left-0 w-full sm:w-auto"
 const ul1ColClassName = "border-2 bg-gray-50 one m-0 grid list-none gap-x-[10px] p-[22px] sm:w-[500px] sm:grid-cols-[0.75fr_1fr]";
-const ul2ColClassName = "border-2 bg-gray-50 m-0 grid list-none gap-x-[10px] p-[22px] sm:w-[300px] sm:grid-flow-col sm:grid-rows-2";
 
 const basicNavItem = (title: string, href: string) => {
     const linkClassName = "text-violet11 hover:underline focus:shadow-violet7 block select-none rounded-[4px] px-3 py-2 text-[15px] font-medium leading-none no-underline outline-none focus:shadow-[0_0_0_2px]";
@@ -29,6 +27,7 @@ const basicNavItem = (title: string, href: string) => {
             </NavigationMenu.Link>
         </NavigationMenu.Item>)
 }
+
 const aboutJerryNav = () => {
     return (
         <NavigationMenu.Item>
@@ -76,71 +75,55 @@ const aboutJerryNav = () => {
 
 const projectsNav = () => {
     return (
-        <NavigationMenu.Item>
-            <NavigationMenu.Trigger className={dropTriggerClassName}>
+        <div className="dropdown">
+            <label tabIndex={0} className={dropTriggerClassName}>
                 Projects
                 <CaretDownIcon
                     className={caretClassName}
-                    aria-hidden
-                />
-            </NavigationMenu.Trigger>
-            <NavigationMenu.Content className="absolute top-0 left-0 w-full sm:w-auto">
-                <ul className={ul1ColClassName}>
-                    <ListItem title="Projects" href="/projects">
-                        Showcase several projects, some production, some demo.
-                    </ListItem>
-                    <ListItem title="Build Process" href="/buildProcess">
-                        Tools and processes used to build this site and multi-platform apps.
-                    </ListItem>
-                </ul>
-            </NavigationMenu.Content>
-        </NavigationMenu.Item>
+                    aria-hidden/>
+            </label>
+            <ul tabIndex={0}
+                className="border dropdown-content z-[1] menu py-0 px-2 shadow bg-base-100 rounded-box w-52">
+                {basicNavItem("Projects", "/projects")}
+                {basicNavItem("Build Process", "/buildProcess")}
+            </ul>
+        </div>
     )
 }
 
-const userNav = (status: string, session: Session) => {
 
-    const admin = session.user?.email === "jerry@anythinginternet.com";
-
+const userMenu = (status: string, session: Session) => {
     return (
-        (!session || null)
-        && (basicNavItem("Sign In", "/api/auth/signin"))
-        ||
+        <div className="dropdown">
+            <label tabIndex={0} className={dropTriggerClassName}>
+                {!session && "User Menu"}
+                {(session && session.user?.name)}
+                <CaretDownIcon className={caretClassName} aria-hidden/>
+            </label>
 
-        <NavigationMenu.Item>
-            <NavigationMenu.Trigger className={dropTriggerClassName + " relative"}>
-
-                {session.user?.name || "User Menu"}
-                <CaretDownIcon
-                    className={caretClassName}
-                    aria-hidden
-                />
-            </NavigationMenu.Trigger>
-            <NavigationMenu.Content className="absolute top-0 left-0 w-full sm:w-auto">
-                <ul className={ul2ColClassName + " relative"}>
-                    {(admin) && adminMenu()}
-                    <ListItem title="Log out" href="/api/auth/signout">
-                        End your session.
-                    </ListItem>
-                </ul>
-            </NavigationMenu.Content>
-        </NavigationMenu.Item>
+            <ul tabIndex={0}
+                className="border dropdown-content z-[1] menu py-0 px-2 shadow bg-base-100 rounded-box w-52">
+                {adminMenu(session)}
+                {(!session || null)
+                    && (basicNavItem("Sign In", "/api/auth/signin"))
+                    || (basicNavItem("Sign Out", "/api/auth/signout"))}
+            </ul>
+        </div>
     );
 }
 
-const adminMenu = () => {
+const adminMenu = (session: Session | null) => {
+    if (!session) return null;
+    const admin = session.user?.email === "jerry@anythinginternet.com";
+    if (!admin) return null;
+
     return (
         <>
-            <ListItem title="Post Article" href="/articles/new">
-                Post an article.
-            </ListItem>
-            <ListItem title="Post Project" href="/projects/new">
-                Post a project.
-            </ListItem>
+            {basicNavItem("Post New Article", "/articles/new")}
+            {basicNavItem("Post New Project", "/projects/new")}
         </>
-    )
+    );
 }
-
 
 const NavBar = () => {
     const {status, data: session} = useSession();
@@ -154,11 +137,7 @@ const NavBar = () => {
                 {aboutJerryNav()}
                 {projectsNav()}
                 {basicNavItem("Contact", "/contact")}
-
-                {(!session || null)
-                    && basicNavItem("Sign In", "/api/auth/signin")
-                    || userNav(status, session!)
-                }
+                {userMenu(status, session!)}
 
                 <NavigationMenu.Indicator
                     className="data-[state=visible]:animate-fadeIn data-[state=hidden]:animate-fadeOut top-full z-[1] flex h-[10px] items-end justify-center overflow-hidden transition-[width,transform_250ms_ease]">
