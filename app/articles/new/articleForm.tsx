@@ -1,18 +1,18 @@
 'use client';
-import React, {useEffect, useState} from 'react';
-import {Button, Callout, Select, TextField} from '@radix-ui/themes';
+import React, {useState} from 'react';
+import {Button, Callout, TextField} from '@radix-ui/themes';
 import {ErrorMessage, Spinner} from "@/app/components";
 import {useRouter} from "next/navigation";
 import {Controller, useForm} from "react-hook-form";
 import axios from "axios";
 import "easymde/dist/easymde.min.css";
-import SimpleMDE from "react-simplemde-editor";
 import {newArticleSchema} from "@/app/models/validationSchemas";
 import {z} from "zod";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {Article, Category} from ".prisma/client";
 import "./form.css"
-import {Session} from "next-auth";
+import dynamic from 'next/dynamic'
+import {useSession} from "next-auth/react";
 
 interface Props {
     article?: Article
@@ -20,23 +20,19 @@ interface Props {
 }
 
 
+const SimpleMDE = dynamic(() => import('react-simplemde-editor'), {ssr: false})
+
 const ArticleForm = ({article, categories}: Props) => {
 
     const [error, setError] = useState<string>('');
     const [isSubmitting, setSubmitting] = useState<boolean>(false);
-
-    // useEffect(() => {
-    //     setPageURL(window.location.href);
-    //     if (navigator.share) {
-    //         setNativeShare(true);
-    //     }
-    // }, []);
-
-
-
+    const session = useSession();
+    const userId = session.data?.user?.email
     const router = useRouter();
 
+
     type ArticleFormData = z.infer<typeof newArticleSchema>;
+    var data: ArticleFormData;
 
     const {register, control, handleSubmit, formState: {errors}} = useForm<ArticleFormData>(
         {
@@ -45,6 +41,7 @@ const ArticleForm = ({article, categories}: Props) => {
     );
 
     const onSubmit = handleSubmit(async (data: ArticleFormData) => {
+
         try {
             setSubmitting(true);
             if (article) {
@@ -76,6 +73,13 @@ const ArticleForm = ({article, categories}: Props) => {
                   }
                   }
             >
+
+                <input
+                    type="hidden"
+                    {...register('userId')}
+                    defaultValue={article?.userId || userId || 'unknown'}
+                />
+
                 <TextField.Root>
                     <TextField.Input
                         defaultValue={article?.title}
@@ -84,21 +88,14 @@ const ArticleForm = ({article, categories}: Props) => {
                 </TextField.Root>
                 <ErrorMessage>{errors.title?.message}</ErrorMessage>
 
-                <Select.Root defaultValue=""  {...register('categoryId')} >
-                    <Select.Trigger className='bg-white' placeholder="Select a category">
-                        <Select.Label>categoryId</Select.Label>
-                    </Select.Trigger>
-                    <Select.Content>
-
-                        {categories.map((category: Category) => (
-                            <Select.Item key={category.id} value={category.id.toString() || ''}>
-                                {category.name}
-                            </Select.Item>
-                        ))}
-                    </Select.Content>
-                </Select.Root>
-                <ErrorMessage>{errors.categoryId?.message}</ErrorMessage>
-
+                <select {...register("categoryId")} placeholder="Select a category">
+                    <option value="">Select a category</option>
+                    {categories.map((category: Category) => (
+                        <option key={category.id} value={category.id.toString()}>
+                            {category.name}
+                        </option>
+                    ))}
+                </select>
 
                 <Controller
                     name="summary"

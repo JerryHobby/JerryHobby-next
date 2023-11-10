@@ -15,17 +15,18 @@ export async function GET(request: NextRequest) {
     return NextResponse.json(articles);
 }
 
-
-
 export async function POST(req: NextRequest) {
-    const session = await getServerSession(authOptions);
+    // const session = await getServerSession(authOptions);
+    //
+    // console.log("session: ", session);
+    //
 
-    if (!session || !(session.user?.email === "jerry@anythinginternet.com")) {
-        return NextResponse.json(
-            {
-                error: "Access Denied"
-            }, {status: 401});
-    }
+    // if (!session || !(session.user?.email === "jerry@anythinginternet.com")) {
+    //     return NextResponse.json(
+    //         {
+    //             error: "Access Denied"
+    //         }, {status: 401});
+    // }
 
     const body = await req.json();
 
@@ -36,13 +37,16 @@ export async function POST(req: NextRequest) {
             {status: 400});
     }
 
+    console.log(body);
+    console.log(body.categoryId);
+
     const newArticle = await prisma.article.create({
         data: {
             userId: body.userId,
             title: body.title,
             summary: body.summary,
-            text: body.description,
-            categoryId: body.categoryId,
+            text: body.text,
+            categoryId: parseInt(body.categoryId),
         }
     });
 

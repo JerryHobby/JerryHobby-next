@@ -16,6 +16,6 @@ export const newArticleSchema = z.object({
     categoryId: z.string()
         .min(1, "Category is required")
         .max(255)
-        .default('7'),
+        //.default('7'),
 });
 
