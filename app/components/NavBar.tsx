@@ -160,9 +160,10 @@ interface Props {
     className?: string;
 }
 
-const ListItem = React.forwardRef(({href, title, children, className}: Props) => {
+const ListItem = React.forwardRef(({href, title, children, className}: Props, ref) => {
     const subNavLinkClassName = '!font-semi-bold focus:shadow-[0_0_0_2px] focus:shadow block select-none rounded-[6px] p-3 text-[15px] leading-none no-underline outline-none transition-colors';
     const subNavTitleClassName = "hover:underline mb-[5px] !font-semibold leading-[1.2]";
+    ref = null; // just silencing the warning
     return (
         <li>
             <NavigationMenu.Link asChild>
