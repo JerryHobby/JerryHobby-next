@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from "next/image";
 import Title from "@/app/components/Title";
 import usePages from "@/app/models/UsePages";
 import ShowMarkdown from "@/app/components/ShowMarkdown";
@@ -22,9 +23,13 @@ const Contact = async () => {
         <main>
             <Title title={title} icon={icon}/>
             <div className='flex flex-col sm:flex-row gap-5 justify-center'>
+                <FlexibleFrame className='border shadow rounded flex flex-col sm:flex-row gap-5 justify-center bg-gray-50'>
+                    <Image
+                        src="/images/jerry_hobby_headshot.png"
+                        alt="Jerry Hobby" width={150} height={100}
+                        className="align-top object-contain h-150 w-250 rounded-box "/>
 
-                <FlexibleFrame className='border w-400 shadow bg-gray-50 '>
-                {data && getCard(data['Contact 1'])}
+                    {data && getCard(data['Contact 1'])}
                 </FlexibleFrame>
             </div>
         </main>
