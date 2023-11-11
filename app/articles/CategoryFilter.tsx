@@ -8,7 +8,7 @@ interface Props {
     categories: Category[];
 }
 
-const CategoryFilter = async ({categories}:Props) => {
+const CategoryFilter = ({categories}:Props) => {
 
     const router = useRouter();
     const searchParams = useSearchParams();

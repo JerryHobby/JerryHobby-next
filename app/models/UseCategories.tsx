@@ -1,8 +1,8 @@
 import prisma from "@/prisma/client";
 
-const UseCategories = async () => {
+const UseCategories = () => {
 
-    const categories = await prisma.category.findMany(
+    return prisma.category.findMany(
         {
             include: {
                 articles: true
@@ -12,8 +12,6 @@ const UseCategories = async () => {
             }
         }
     );
-
-    return categories
 };
 
 export default UseCategories;

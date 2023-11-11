@@ -16,8 +16,11 @@ export default async function Home() {
     const data = await usePages(pagePrefix);
 
     return (
-        <main>
+        <main className='mt-0'>
             <Title title={title} icon={icon}/>
+            {/*<Image className='mb-10 z-9 rounded-box '*/}
+            {/*       src='/images/artificial-intelligence-3706562_1280.jpg'*/}
+            {/*       alt='Artificial Intelligence'height={200} width={1280}/>*/}
             <Flex align='start'>
                 {(data) && data['Home 1']
                     && <ShowMarkdown item={data['Home 1']}/>}
