@@ -18,9 +18,9 @@ const config: Config = {
             },
         },
     },
-    daisyui: {
-        themes: ["winter", "light", "dark"],
-    },
+    // daisyui: {
+    //     themes: ["winter", "light", "dark"],
+    // },
 
     plugins: [
         require('daisyui')

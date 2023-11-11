@@ -3,7 +3,7 @@ import Title from "@/app/components/Title";
 import usePages from "@/app/models/UsePages";
 import ShowMarkdown from "@/app/components/ShowMarkdown";
 import {Page} from ".prisma/client";
-import {Card} from "@radix-ui/themes";
+import FlexibleFrame from "@/app/components/FlexibleFrame";
 
 const Contact = async () => {
 
@@ -18,15 +18,15 @@ const Contact = async () => {
         return ( <ShowMarkdown item={content}/>);
     }
 
-    const cardStyle = 'prose w-96 mt-5 p-5 bg-gray-100 rounded-md'
-
     return (
         <main>
             <Title title={title} icon={icon}/>
+            <div className='flex flex-col sm:flex-row gap-5 justify-center'>
 
-            <Card className={cardStyle}>
+                <FlexibleFrame className='border w-400 shadow bg-gray-50 '>
                 {data && getCard(data['Contact 1'])}
-            </Card>
+                </FlexibleFrame>
+            </div>
         </main>
     )
 };

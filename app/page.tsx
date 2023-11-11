@@ -24,7 +24,7 @@ export default async function Home() {
             {/*       alt='Artificial Intelligence'height={200} width={1280}/>*/}
             <div className='flex flex-col sm:flex-row gap-5'>
 
-                <FlexibleFrame className='bg-sky-100 border'>
+                <FlexibleFrame className='bg-indigo-50 border'>
                 {(data) && data['Home 1']
                     && <ShowMarkdown item={data['Home 1']}/>}
                 </FlexibleFrame>
@@ -40,8 +40,9 @@ export default async function Home() {
                 && <ShowMarkdown item={data['Home 2']}/>}
                 </FlexibleFrame>
 
-            <YoutubeEmbed embedId='wOZe14BmnTo'  />
-
+            <div className="flex justify-center pb-10">
+                <YoutubeEmbed embedId="wOZe14BmnTo"/>
+            </div>
         </main>
     )
 }

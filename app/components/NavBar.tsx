@@ -83,7 +83,7 @@ const projectsNav = () => {
                     aria-hidden/>
             </label>
             <ul tabIndex={0}
-                className="border dropdown-content z-[1] menu py-0 px-2 shadow bg-base-100 rounded-box w-52">
+                className="border dropdown-content z-[1] menu py-0 px-2 shadow bg-gray-50 rounded-box w-52">
                 {basicNavItem("Projects", "/projects")}
                 {basicNavItem("Build Process", "/buildProcess")}
             </ul>
@@ -102,7 +102,7 @@ const userMenu = (status: string, session: Session) => {
             </label>
 
             <ul tabIndex={0}
-                className="border dropdown-content z-[1] menu py-0 px-2 shadow bg-base-100 rounded-box w-52">
+                className="border dropdown-content z-[1] menu py-0 px-2 shadow bg-gray-50 rounded-box w-52">
                 {adminMenu(session)}
                 {(!session || null)
                     && (basicNavItem("Sign In", "/api/auth/signin"))
@@ -127,7 +127,7 @@ const adminMenu = (session: Session | null) => {
 
 const NavBar = () => {
     const {status, data: session} = useSession();
-    const navBarClassName = "center m-0 flex list-none rounded-[6px] bg-gray-50 p-1 shadow-gray-500 shadow-[0_1px_3px]"
+    const navBarClassName = "center m-0 flex list-none rounded-[6px] bg-white p-1 shadow-gray-500 shadow-[0_1px_3px]"
 
     return (
         <NavigationMenu.Root className="relative z-[1] flex w-screen justify-center">

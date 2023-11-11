@@ -2,19 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
-
 :root {
     --foreground-rgb: 0, 0, 0;
+    --background-rgb: cc, cc, cc;
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
         --foreground-rgb: 255, 255, 255;
+        background-color: rgb(var(--background-rgb));
+
     }
 }
 
 body {
     color: rgb(var(--foreground-rgb));
+    background-color: rgb(var(--background-rgb));
     padding: 0;
 }
 
