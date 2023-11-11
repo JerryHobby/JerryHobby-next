@@ -32,7 +32,7 @@ export default async function Home() {
                 <Image
                     src="/images/jerry_hobby_headshot.png"
                     alt="Jerry Hobby" width={250} height={150}
-                    className="align-top object-contain h-150 w-250 border mx-16 p-3 rounded-box "/>
+                    className="align-top object-contain h-150 w-250 border mx-10 p-3 rounded-box "/>
                 </FlexibleFrame>
             </div>
             <FlexibleFrame>
