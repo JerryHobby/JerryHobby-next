@@ -23,6 +23,7 @@ const Projects = async () => {
             <div>
                 <Link href={`${project.url}`} target="_blank">
                     <Heading size='5' className='pb-5' align='center'>{project.title}</Heading>
+                    <hr className='pb-5'/>
                     <Flex align='start' gap='1'>
                         <Image src={project.thumbnailUrl}
                                alt={'App Thumbnail'}
