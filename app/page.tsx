@@ -1,4 +1,4 @@
-import Title from "@/app/components/Title";
+//import Title from "@/app/components/Title";
 import React from "react";
 import ShowMarkdown from "@/app/components/ShowMarkdown";
 import usePages from "@/app/models/UsePages";
@@ -10,18 +10,18 @@ import FlexibleFrame from "@/app/components/FlexibleFrame";
 
 export default async function Home() {
 
-    const title = "Jerry Hobby"
-    const icon = "home"
+    //const title = "Jerry Hobby"
+    //const icon = "home"
     const pagePrefix = "home"
     const data = await usePages(pagePrefix);
 
     return (
         <main className='mt-0'>
-            <Title title={title} icon={icon}/>
+            {/*<Title title={title} icon={icon}/>*/}
 
-            {/*<Image className='mb-10 z-9 rounded-box '*/}
-            {/*       src='/images/artificial-intelligence-3706562_1280.jpg'*/}
-            {/*       alt='Artificial Intelligence'height={200} width={1280}/>*/}
+            <Image className='mb-10 z-9 rounded-box '
+                   src='/images/banner-nerd.png'
+                   alt='Programmer Banner' height={200} width={1280}/>
             <div className='flex flex-col sm:flex-row gap-5'>
 
                 <FlexibleFrame className='bg-indigo-50 border'>
