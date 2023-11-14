@@ -28,11 +28,16 @@ export default async function Home() {
                 {(data) && data['Home 1']
                     && <ShowMarkdown item={data['Home 1']}/>}
                 </FlexibleFrame>
-                <FlexibleFrame className='min-w-fit'>
-                <Image
-                    src="/images/jerry_hobby_headshot.png"
-                    alt="Jerry Hobby" width={250} height={150}
-                    className="align-top object-contain h-150 w-250 border mx-10 p-3 rounded-box "/>
+                <FlexibleFrame className='min-w-fit '>
+                    <Image
+                        src="/images/jerry_hobby_headshot.png"
+                        alt="Jerry Hobby" width={250} height={150}
+                        className=" mb-5 align-top object-contain h-150 w-250 border mx-10 p-3 rounded-box "/>
+                    <Image
+                        src="/images/skillstack.png"
+                        alt="full stack developer" width={250} height={150}
+                        className="align-top object-contain h-150 w-250 border mx-10 p-3 rounded-box "/>
+
                 </FlexibleFrame>
             </div>
             <FlexibleFrame>
