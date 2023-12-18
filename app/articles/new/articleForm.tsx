@@ -88,7 +88,7 @@ const ArticleForm = ({article, categories}: Props) => {
                 </TextField.Root>
                 <ErrorMessage>{errors.title?.message}</ErrorMessage>
 
-                <select {...register("categoryId")} placeholder="Select a category">
+                <select {...register("categoryId")}>
                     <option value="">Select a category</option>
                     {categories.map((category: Category) => (
                         <option key={category.id} value={category.id.toString()}>

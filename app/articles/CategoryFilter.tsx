@@ -33,7 +33,7 @@ const CategoryFilter = ({categories}:Props) => {
                 }
             }
             }>
-            <Select.Trigger placeholder='Filter by status ...'>
+            <Select.Trigger>
                 <Select.Label>Categories</Select.Label>
             </Select.Trigger>
             <Select.Content>
