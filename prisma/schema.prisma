@@ -109,7 +109,7 @@ model Like {
   @@index([userId], map: "Like_userId_fkey")
 }
 
-model Page2 {
+model Page {
   id    Int      @id @default(autoincrement())
   date  DateTime @default(now())
   title String   @unique
