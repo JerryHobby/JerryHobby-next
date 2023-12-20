@@ -41,8 +41,12 @@
     "recharts": "^2.9.1",
     "remark-gfm": "^4.0.0",
     "resend": "^1.1.0",
-    "webpack": "^5.88.2",
-    "zod": "^3.22.4"
+    "zod": "^3.22.4",
+    "snake_game": "file:app/snake_game/pkg/",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.3.3",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",
