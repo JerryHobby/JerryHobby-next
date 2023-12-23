@@ -21,7 +21,7 @@ globalScope.resetGame = resetGame;
 
 function startGame() {
     globalScope.my_log("startGame");
-    if(game_over) {
+    if (game_over) {
         globalScope.my_log("Resetting game");
         resetGame();
     } else {
@@ -42,6 +42,7 @@ function resetGame() {
 function isGameOver() {
     return game_over;
 }
+
 globalScope.my_log = function (s: string) {
     const DEBUG = false;
     if (DEBUG) {
@@ -236,10 +237,10 @@ init().then(wasm => {
     }
 
     function snake_score_update() {
-        snake_score.innerHTML = String((world.snake_length() - 3 ) * 200);
+        snake_score.innerHTML = String((world.snake_length() - 3) * 200);
     }
 
-        // touch event controls for up, down, left, right
+    // touch event controls for up, down, left, right
     const touchzone = document.getElementById("snake-canvas") as HTMLDivElement;
     const touchzone_width = touchzone.offsetWidth;
     const touchzone_height = touchzone.offsetHeight;
@@ -248,36 +249,42 @@ init().then(wasm => {
     const touchzone_right = touchzone_left + touchzone_width;
     const touchzone_bottom = touchzone_top + touchzone_height;
 
+
     touchzone.addEventListener('touchstart', (event: TouchEvent) => {
         event.preventDefault();
         const touch = event.touches[0];
         game_pause = false;
+        console.log(touch.pageX, touch.pageY);
 
-        if (touch.pageX < touchzone_left + touchzone_width / 2) {
+        const touch_top_third = touchzone_top + touchzone_height / 3;
+        const touch_bottom_third = touchzone_bottom - touchzone_height / 3;
+        const touch_left_third = touchzone_left + touchzone_width / 3;
+        const touch_right_third = touchzone_right - touchzone_width / 3;
+
+        if (touch.pageY < touch_top_third) {
+            if (direction === DIRECTION.DOWN) {
+                return;
+            }
+            direction = DIRECTION.UP;
+        } else if (touch.pageY > touch_bottom_third) {
+            if (direction === DIRECTION.UP) {
+                return;
+            }
+            direction = DIRECTION.DOWN;
+        } else if (touch.pageX < touch_left_third) {
             if (direction === DIRECTION.RIGHT) {
                 return;
             }
             direction = DIRECTION.LEFT;
-        } else {
+        } else if (touch.pageX > touch_right_third) {
             if (direction === DIRECTION.LEFT) {
                 return;
             }
             direction = DIRECTION.RIGHT;
         }
-        if (touch.pageY < touchzone_top + touchzone_height / 2) {
-            if (direction === DIRECTION.DOWN) {
-                return;
-            }
-            direction = DIRECTION.UP;
-        } else {
-            if (direction === DIRECTION.UP) {
-                return;
-            }
-            direction = DIRECTION.DOWN;
-        }
     }, false);
 
-        document.addEventListener('keydown', (event: KeyboardEvent) => {
+    document.addEventListener('keydown', (event: KeyboardEvent) => {
         if (event.key === "ArrowLeft") {
             game_pause = false;
             if (direction === DIRECTION.RIGHT) {
