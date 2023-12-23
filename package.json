@@ -42,7 +42,7 @@
     "remark-gfm": "^4.0.0",
     "resend": "^1.1.0",
     "zod": "^3.22.4",
-    "snake_game": "file:app/snake_game/pkg/",
+    "snake_game": "file:./app/snake_game/pkg",
     "ts-loader": "^9.5.1",
     "typescript": "^5.3.3",
     "webpack": "^5.89.0",

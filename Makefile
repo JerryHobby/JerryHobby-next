@@ -17,10 +17,10 @@ docs:
 	@cargo doc --no-deps --open
 
 run: 	
-	@cargo run
+	@npm run dev
 
 build: 	
-	@cargo build
+	@npm run build
 
 release: 	
 	@cargo build --release

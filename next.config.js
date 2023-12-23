@@ -4,9 +4,6 @@ const nextConfig = {}
 module.exports = nextConfig;
 
 
-
-// Injected content via Sentry wizard below
-
 const { withSentryConfig } = require("@sentry/nextjs");
 
 module.exports = withSentryConfig(
@@ -38,5 +35,12 @@ module.exports = withSentryConfig(
 
     // Automatically tree-shake Sentry logger statements to reduce bundle size
     disableLogger: true,
-  }
+  },
+    {
+        webpack(config) {
+            config.output.webassemblyModuleFilename = 'hello_wasm_bg.wasm'
+            config.experiments = {asyncWebAssembly: true}
+            return config
+        },
+    }
 );

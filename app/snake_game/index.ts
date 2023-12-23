@@ -10,22 +10,22 @@ declare global {
     }
 }
 
+const globalScope: any = typeof window !== 'undefined' ? window : {};
+
 let game_pause: boolean = true;
 let game_over: boolean = false;
 
-if (typeof window !== 'undefined') {
-    window.startGame = startGame;
-    window.pauseGame = pauseGame;
-    window.resetGame = resetGame;
-}
+globalScope.startGame = startGame;
+globalScope.pauseGame = pauseGame;
+globalScope.resetGame = resetGame;
 
 function startGame() {
-    window.my_log("startGame");
+    globalScope.my_log("startGame");
     if(game_over) {
-        window.my_log("Resetting game");
+        globalScope.my_log("Resetting game");
         resetGame();
     } else {
-        window.my_log("Resuming game");
+        globalScope.my_log("Resuming game");
         game_over = false;
         game_pause = false;
     }
@@ -42,7 +42,7 @@ function resetGame() {
 function isGameOver() {
     return game_over;
 }
-window.my_log = function (s: string) {
+globalScope.my_log = function (s: string) {
     const DEBUG = false;
     if (DEBUG) {
         console.log(s);
