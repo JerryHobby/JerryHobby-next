@@ -2,9 +2,9 @@
 import React from 'react';
 import './index';
 import styles from './snake_game.module.css';
-import {FaArrowDown, FaArrowLeft, FaArrowRight, FaArrowUp} from 'react-icons/fa';
+import { FaArrowDown, FaArrowLeft, FaArrowRight, FaArrowUp } from 'react-icons/fa';
 
-let btnClass = "bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-1 px-4 border border-blue-500 hover:border-transparent rounded"
+let btnClass = "bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-1 px-4 mx-5 my-0 border border-blue-500 hover:border-transparent rounded"
 
 export default function Snake() {
     let globalScope: any = typeof window !== 'undefined' ? window : {};
@@ -16,16 +16,16 @@ export default function Snake() {
                 <canvas id="snake-canvas" className={styles['snake-canvas']}></canvas>
                 <div id='overlay' className={styles['snake-overlay'] + ' absolute z-50 pointer-events-none'}>
                     <div className="text-5xl  z-50 absolute top-5 left-1/2 transform -translate-x-1/2 opacity-10">
-                        <FaArrowUp/>
+                        <FaArrowUp />
                     </div>
                     <div className="text-5xl z-50 absolute bottom-5 left-1/2 transform -translate-x-1/2 opacity-10">
-                        <FaArrowDown/>
+                        <FaArrowDown />
                     </div>
                     <div className="text-5xl z-50 absolute left-5 top-1/2 transform -translate-y-1/2 opacity-10">
-                        <FaArrowLeft/>
+                        <FaArrowLeft />
                     </div>
                     <div className="text-5xl z-50 absolute right-5 top-1/2 transform -translate-y-1/2 opacity-10">
-                        <FaArrowRight/>
+                        <FaArrowRight />
                     </div>
                 </div>
                 <div id="snake-controls" className={styles['snake-controls']}>
