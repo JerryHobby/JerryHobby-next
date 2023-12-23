@@ -239,7 +239,45 @@ init().then(wasm => {
         snake_score.innerHTML = String((world.snake_length() - 3 ) * 200);
     }
 
-    document.addEventListener('keydown', (event: KeyboardEvent) => {
+        // touch event controls for up, down, left, right
+    const touchzone = document.getElementById("snake-canvas") as HTMLDivElement;
+    const touchzone_width = touchzone.offsetWidth;
+    const touchzone_height = touchzone.offsetHeight;
+    const touchzone_left = touchzone.offsetLeft;
+    const touchzone_top = touchzone.offsetTop;
+    const touchzone_right = touchzone_left + touchzone_width;
+    const touchzone_bottom = touchzone_top + touchzone_height;
+
+    touchzone.addEventListener('touchstart', (event: TouchEvent) => {
+        event.preventDefault();
+        const touch = event.touches[0];
+        game_pause = false;
+
+        if (touch.pageX < touchzone_left + touchzone_width / 2) {
+            if (direction === DIRECTION.RIGHT) {
+                return;
+            }
+            direction = DIRECTION.LEFT;
+        } else {
+            if (direction === DIRECTION.LEFT) {
+                return;
+            }
+            direction = DIRECTION.RIGHT;
+        }
+        if (touch.pageY < touchzone_top + touchzone_height / 2) {
+            if (direction === DIRECTION.DOWN) {
+                return;
+            }
+            direction = DIRECTION.UP;
+        } else {
+            if (direction === DIRECTION.UP) {
+                return;
+            }
+            direction = DIRECTION.DOWN;
+        }
+    }, false);
+
+        document.addEventListener('keydown', (event: KeyboardEvent) => {
         if (event.key === "ArrowLeft") {
             game_pause = false;
             if (direction === DIRECTION.RIGHT) {

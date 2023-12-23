@@ -22,6 +22,7 @@
     "@sentry/nextjs": "^7.77.0",
     "axios": "^1.6.0",
     "bcrypt": "^5.1.1",
+    "copy-webpack-plugin": "^11.0.0",
     "csv-parser": "^3.0.0",
     "daisyui": "^3.9.2",
     "got": "^13.0.0",
@@ -41,12 +42,12 @@
     "recharts": "^2.9.1",
     "remark-gfm": "^4.0.0",
     "resend": "^1.1.0",
-    "zod": "^3.22.4",
     "snake_game": "file:./app/snake_game/pkg",
     "ts-loader": "^9.5.1",
     "typescript": "^5.3.3",
     "webpack": "^5.89.0",
-    "webpack-cli": "^5.1.4"
+    "webpack-cli": "^5.1.4",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",
