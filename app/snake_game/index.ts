@@ -1,6 +1,5 @@
 import init, {World} from "snake_game";
 
-
 declare global {
     interface Window {
         my_log: (s: string) => void;
@@ -14,10 +13,11 @@ declare global {
 let game_pause: boolean = true;
 let game_over: boolean = false;
 
-window.startGame = startGame;
-window.resetGame = resetGame;
-window.pauseGame = pauseGame;
-window.isGameOver = isGameOver;
+if (typeof window !== 'undefined') {
+    window.startGame = startGame;
+    window.pauseGame = pauseGame;
+    window.resetGame = resetGame;
+}
 
 function startGame() {
     window.my_log("startGame");
@@ -42,13 +42,13 @@ function resetGame() {
 function isGameOver() {
     return game_over;
 }
-
-window.my_log = function(s: string) {
+window.my_log = function (s: string) {
     const DEBUG = false;
     if (DEBUG) {
         console.log(s);
     }
 };
+
 
 init().then(wasm => {
     // game engine parameters
@@ -94,13 +94,13 @@ init().then(wasm => {
     loadSnake();
 
     let snakeHead: HTMLImageElement = new Image();
-    snakeHead.src = './assets/snake_head.png';
+    snakeHead.src = '/snake/snake_head.png';
 
     let snakeBody: HTMLImageElement = new Image();
-    snakeBody.src = './assets/snake_body.png';
+    snakeBody.src = '/snake/snake_body.png';
 
     let snakeEgg: HTMLImageElement = new Image();
-    snakeEgg.src = './assets/snake_egg.png';
+    snakeEgg.src = '/snake/snake_egg.png';
 
     // create canvas
     const canvas: HTMLCanvasElement = document.getElementById("snake-canvas") as HTMLCanvasElement;
@@ -270,5 +270,3 @@ init().then(wasm => {
     });
     update();
 });
-
-export default {init};

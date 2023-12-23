@@ -20,7 +20,7 @@ run:
 	@cargo run
 
 build: 	
-	@wasm-pack build --target web
+	@cargo build
 
 release: 	
 	@cargo build --release
