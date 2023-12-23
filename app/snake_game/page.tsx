@@ -14,7 +14,7 @@ export default function Snake() {
                 <h2 className="text-2xl font-bold text-blue-500 m-5">Jerry&apos;s WASM/Rust Snake Game</h2>
 
                 <canvas id="snake-canvas" className={styles['snake-canvas']}></canvas>
-                <div id='overlay' className={styles['snake-overlay'] + ' absolute z-50'}>
+                <div id='overlay' className={styles['snake-overlay'] + ' absolute z-50 pointer-events-none'}>
                     <div className="text-5xl  z-50 absolute top-5 left-1/2 transform -translate-x-1/2 opacity-10">
                         <FaArrowUp/>
                     </div>
