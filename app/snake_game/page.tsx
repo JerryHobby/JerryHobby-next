@@ -15,16 +15,22 @@ export default function Snake() {
 
                 <canvas id="snake-canvas" className={styles['snake-canvas']}></canvas>
                 <div id='overlay' className={styles['snake-overlay'] + ' absolute z-50 pointer-events-none'}>
-                    <div className="text-5xl  z-50 absolute top-5 left-1/2 transform -translate-x-1/2 opacity-10">
+                    <div className="text-7xl z-50 absolute right-0 top-5 transform -translate-x-1/2 opacity-5">
                         <FaArrowUp />
                     </div>
-                    <div className="text-5xl z-50 absolute bottom-5 left-1/2 transform -translate-x-1/2 opacity-10">
+                    <div className="text-7xl z-50 absolute left-20 top-5 transform -translate-x-1/2 opacity-5">
+                        <FaArrowUp />
+                    </div>
+                    <div className="text-7xl z-50 absolute bottom-5 left-20 transform -translate-x-1/2 opacity-5">
                         <FaArrowDown />
                     </div>
-                    <div className="text-5xl z-50 absolute left-5 top-1/2 transform -translate-y-1/2 opacity-10">
+                    <div className="text-7xl z-50 absolute bottom-5 right-0 transform -translate-x-1/2 opacity-5">
+                        <FaArrowDown />
+                    </div>
+                    <div className="text-7xl z-50 absolute left-5 top-1/2 transform -translate-y-1/2 opacity-5">
                         <FaArrowLeft />
                     </div>
-                    <div className="text-5xl z-50 absolute right-5 top-1/2 transform -translate-y-1/2 opacity-10">
+                    <div className="text-7xl z-50 absolute right-5 top-1/2 transform -translate-y-1/2 opacity-5">
                         <FaArrowRight />
                     </div>
                 </div>
