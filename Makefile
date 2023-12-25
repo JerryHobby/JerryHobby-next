@@ -84,9 +84,9 @@ install: ## Run only on the server to rebuild all objects and restart server
 	@git restore package-lock.json
 	@git pull
 
-	@cd $(PROJECT)/app/chess
+	cd $(PROJECT)/app/chess
 	@wasm-pack build --target web
-	@cd $(PROJECT)/app/snake
+	cd $(PROJECT)/app/snake
 	@wasm-pack build --target web
 
 	@cd $(PROJECT)
