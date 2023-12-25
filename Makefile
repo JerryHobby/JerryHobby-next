@@ -3,6 +3,12 @@ SHELL = /bin/bash   # does not work with zsh
 PROJECT=JerryHobby.com
 PROJECT_PATH=~/source/JerryHobby
 
+## Help
+help: ## Show this help
+	@echo "Usage: make [target]"
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
+
+
 
 ## Modules
 MODULES=chess snake
@@ -19,10 +25,6 @@ snake: ## Build snake module
 
 
 
-## Help
-help: ## Show this help
-	@echo "Usage: make [target]"
-	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
 
 
 git_pull: ## Pull from git
