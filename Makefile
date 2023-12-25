@@ -80,7 +80,7 @@ bump: ## Bump version - will prompt for new version number
 ## Server commands
 
 install: ## Run only on the server to rebuild all objects and restart server
-	cd $(PROJECT)
+	cd $$(PROJECT)
 	@git restore package-lock.json
 	@git pull
 
