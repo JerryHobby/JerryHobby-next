@@ -42,8 +42,8 @@ all: release ## Build all objects for production
 
 clean: ## Remove all generated files
 	@echo "Remove all generated files"
-	@find . -type d -name "pkg" -exec rm -rf {} \;
-	@find . -type d -name "target" -exec rm -rf {} \;
+	find . -type d -name "pkg" -exec rm -rf {} \;
+	find . -type d -name "target" -exec rm -rf {} \;
 
 ## NPM commands
 
