@@ -1,6 +1,6 @@
 SHELL = /bin/bash   # does not work with zsh
 .PHONY: help
-PROJECT = "~/source/JerryHobby.com"
+PROJECT = "~/source/JerryHobby"
 
 
 help: ## Show this help
