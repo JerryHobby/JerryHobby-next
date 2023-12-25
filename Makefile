@@ -85,7 +85,7 @@ install: ## Run only on the server to rebuild all objects and restart server
 	@git pull
 	pwd
 	cd $(PROJECT)/app/chess && wasm-pack build --target web
-	cd $(PROJECT)/app/snake && wasm-pack build --target web
+	cd $(PROJECT)/app/snake_game && wasm-pack build --target web
 	pwd
 	@cd $(PROJECT)
 	@npm install
