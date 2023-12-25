@@ -83,12 +83,10 @@ install: ## Run only on the server to rebuild all objects and restart server
 	@cd $(PROJECT)
 	@git restore package-lock.json
 	@git pull
-
-	cd $(PROJECT)/app/chess
-	@wasm-pack build --target web
-	cd $(PROJECT)/app/snake
-	@wasm-pack build --target web
-
+	pwd
+	cd $(PROJECT)/app/chess && @wasm-pack build --target web
+	cd $(PROJECT)/app/snake && @wasm-pack build --target web
+	pwd
 	@cd $(PROJECT)
 	@npm install
 	@npm update
