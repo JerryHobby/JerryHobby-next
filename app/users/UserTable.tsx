@@ -2,7 +2,7 @@ import {User} from "@/app/users/IUser";
 import Link from "next/link";
 import React from "react";
 import {getServerSession} from "next-auth";
-import {nextAuthOptions} from "@/app/api/auth/[...nextauth]/route";
+import nextAuthOptions from "@/auth";
 
 interface Props {
     sortOrder: string,

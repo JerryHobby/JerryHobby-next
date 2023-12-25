@@ -2,7 +2,7 @@ import React from 'react';
 import UserTable from "@/app/users/UserTable";
 import Link from "next/link";
 import {getServerSession} from "next-auth";
-import {nextAuthOptions} from '@/app/api/auth/[...nextauth]/route';
+import nextAuthOptions from '@/auth';
 
 interface Props {
     searchParams: {

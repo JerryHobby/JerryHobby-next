@@ -1,7 +1,5 @@
 import {NextRequest, NextResponse} from "next/server";
 import prisma from "@/prisma/client";
-import {getServerSession} from "next-auth";
-import authOptions from "@/app/auth/authOptions";
 import {newArticleSchema} from "@/app/models/validationSchemas";
 
 export async function GET(request: NextRequest) {

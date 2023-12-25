@@ -4,7 +4,7 @@ import ShowMarkdown from "@/app/components/ShowMarkdown";
 import usePages from "@/app/models/UsePages";
 import Image from "next/image";
 import YoutubeEmbed from "@/app/components/YoutubeEmbed";
-import 'app/components/YouTubeEmbed.css'
+import '@/app/components/YouTubeEmbed.css'
 import FlexibleFrame from "@/app/components/FlexibleFrame";
 
 
