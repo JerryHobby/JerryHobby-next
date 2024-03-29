@@ -8,6 +8,7 @@
       <sourceFolder url="file://$MODULE_DIR$/app/snake_game/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/app/chess/target" />
       <excludeFolder url="file://$MODULE_DIR$/app/snake_game/target" />
+      <excludeFolder url="file://$MODULE_DIR$/.idea/copilot/chatSessions" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

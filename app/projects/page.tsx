@@ -32,12 +32,16 @@ const Projects = async () => {
                                sizes="100vw"
                                className={'mt-2 '}
                         />
-                        <Box className='px-4'>{project.text}</Box>
+                        <Box className='px-4'>
+                            {project.tools}
+                            <p><br/></p>
+                            {project.text}
+                        </Box>
                     </Flex>
                 </Link>
             </div>
-        );
 
+        );
     }
 
     const cardStyle = 'p-4 border shadow-md rounded-box prose w-2/5 mt-5'
