@@ -18,6 +18,10 @@ const certificates = [
         image: 'Jerry Hobby SoloLearn Certificate - CPP.png'
     },
     {
+        title: 'UDemy Certificate - Godot Game Engine',
+        image: 'Jerry Hobby UDemy Certificate - Godot Game Engine.jpeg'
+    },
+    {
         title: 'SoloLearn Certificate - HTML',
         image: 'Jerry Hobby SoloLearn Certificate - HTML.png'
     },
